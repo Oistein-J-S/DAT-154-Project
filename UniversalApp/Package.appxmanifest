@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="ddcac0d3-6589-4dc2-b5ea-d1e75ed6389c"
-    Publisher="CN=tHa_p"
+    Name="b86a80e5-cdb7-4812-b413-bb5ee88c9262"
+    Publisher="CN=Vegard"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="ddcac0d3-6589-4dc2-b5ea-d1e75ed6389c" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="b86a80e5-cdb7-4812-b413-bb5ee88c9262" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>BackEnd</DisplayName>
-    <PublisherDisplayName>tHa_p</PublisherDisplayName>
+    <DisplayName>UniversalApp</DisplayName>
+    <PublisherDisplayName>Vegard</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="BackEnd.App">
+      EntryPoint="UniversalApp.App">
       <uap:VisualElements
-        DisplayName="BackEnd"
+        DisplayName="UniversalApp"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="BackEnd"
+        Description="UniversalApp"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
