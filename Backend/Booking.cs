@@ -8,6 +8,15 @@ namespace Backend
 {
     class Booking
     {
+        int BookingId { get; set; }
+        Customer Customer { get; set; }
+        int Balance { get; set; }
+        DateTime DateFrom { get; set; }
+        DateTime DateTo { get; set; }
+        Room Room { get; set; }
+        bool CheckedIn;
+        bool CheckedOut;
+
         public Booking(int bookingId, Customer customer, DateTime dateFrom, DateTime dateTo, Room room)
         {
             BookingId = bookingId;
@@ -20,15 +29,6 @@ namespace Backend
             CheckedOut = false;
 
         }
-
-        int BookingId { get; set; }
-        Customer Customer { get; set; }
-        int Balance {get;set;}
-        DateTime DateFrom { get; set; }
-        DateTime DateTo { get; set; }
-        Room Room { get; set; }
-        bool CheckedIn;
-        bool CheckedOut;
 
         public void ChargeRoom(int amount)
         {

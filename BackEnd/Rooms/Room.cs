@@ -10,26 +10,26 @@ namespace Backend
     {
         int RoomNumber { get; set; }
         int BedCount { get; set; }
-        int Size { get; set; }
-                //make ENUM?
+        //make ENUM?
         public List<Issue> Issues { get; }
         public List<Order> Orders { get; }
+        DateTime LastCleaned { get; set; }
+        //Front desk check-in / check-out controls this
+        //public bool Inhabited { get; set; } // Conflicts with Orders checked in
 
-        public Room(int roomNumber, int bedCount, int size)
+        public Room(int roomNumber, int bedCount)
         {
             RoomNumber = roomNumber;
             BedCount = bedCount;
-            Size = size;
-            Inhabited = false;
             LastCleaned = new DateTime(1970, 1, 1);
         }
         public void RaiseIssue(Issue issue)
         {
-            Issues.Add(Issue issue);
+            Issues.Add(issue);
         }
         public void CompleteIssue(Issue issue)
         {
-            Issues.Remove(Issue issue);
+            Issues.Remove(issue);
         }
         public void Clean()
         {
@@ -39,12 +39,5 @@ namespace Backend
         {
             return DateTime.Today == LastCleaned;
         }
-
-
-        //Front desk check-in / check-out controls this
-        public bool Inhabited { get; set; }
-        //Cleaner sets this on completed task
-        DateTime LastCleaned { get; set; }
-
 }
 }

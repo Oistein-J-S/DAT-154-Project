@@ -106,21 +106,20 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Address.cs" />
     <Compile Include="Booking.cs" />
-    <Compile Include="Cleaning.cs" />
+    <Compile Include="Unused\Cleaning.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Hotel.cs" />
-    <Compile Include="Issue.cs" />
-    <Compile Include="Maintenance.cs" />
+    <Compile Include="Rooms\Issue.cs" />
+    <Compile Include="Unused\Maintenance.cs" />
     <Compile Include="Order.cs" />
-    <Compile Include="Room.cs" />
-    <Compile Include="Service.cs" />
-    <Compile Include="Employee.cs" />
+    <Compile Include="Rooms\Room.cs" />
+    <Compile Include="Unused\Service.cs" />
+    <Compile Include="Unused\Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Standard.cs" />
-    <Compile Include="Suite.cs" />
-    <Compile Include="Superior.cs" />
+    <Compile Include="Rooms\Standard.cs" />
+    <Compile Include="Rooms\Suite.cs" />
+    <Compile Include="Rooms\Superior.cs" />
     <EmbeddedResource Include="Properties\Backend.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +127,7 @@
       <Version>6.0.6</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
