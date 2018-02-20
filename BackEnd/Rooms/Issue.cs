@@ -11,19 +11,17 @@ namespace Backend
      */
     class Issue
     {
-        //bool InProgress;
         string Description { get; set; }
+        DateTime Created { get; }
         DateTime Completed { get; set; }
-        DateTime Created {get;}
-
+        
         public Issue(string description)
         {
-            //InProgress = false;
             Description = description;
             Created = DateTime.Today;
         }
 
-        public void Resolve()
+        public void Resolve()  // Resolves the issue making it inactive
         {
             Completed = DateTime.Now;
         }

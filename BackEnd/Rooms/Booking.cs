@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Backend
 {
+    /**
+     * A booking is stored in a room and represents a customers reservation of a room.
+     * Each booking handles the customer and the customers room service requests
+     */
     class Booking
     {
         int BookingId { get; set; }
@@ -13,9 +17,9 @@ namespace Backend
         int Balance { get; set; }
         DateTime DateFrom { get; set; }
         DateTime DateTo { get; set; }
-        Room Room { get; set; }
         bool CheckedIn;
         bool CheckedOut;
+        List<Order> Orders;
 
         public Booking(int bookingId, Customer customer, DateTime dateFrom, DateTime dateTo, Room room)
         {
@@ -23,7 +27,6 @@ namespace Backend
             Customer = customer;
             DateFrom = dateFrom;
             DateTo = dateTo;
-            Room = room;
             Balance = 0;
             CheckedIn = false;
             CheckedOut = false;
@@ -34,6 +37,7 @@ namespace Backend
         {
             Balance += amount;
         }
+
         public void Settle()
         {
             //If payment is OK
@@ -41,6 +45,7 @@ namespace Backend
             Balance = 0;
             }
         }
+
         public bool Charge()
         {
             //Will not be implemented
@@ -48,7 +53,6 @@ namespace Backend
         }
         public void CheckIn()
         {
-            Room.Inhabited = true;
             CheckedIn = true;
         }
 

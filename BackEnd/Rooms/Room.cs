@@ -8,14 +8,14 @@ namespace Backend
 {
     class Room
     {
-        int RoomNumber { get; set; }
-        int BedCount { get; set; }
-        //make ENUM?
-        public List<Issue> Issues { get; }
-        public List<Order> Orders { get; }
+        int RoomNumber { get; set; } //make ENUM?
+        int BedCount { get; set; } //make ENUM?
+
+        List<Order> Orders { get; }
+        List<Issue> Issues { get; } //Maintenance issues
+        //TODO Room Scervice items
+
         DateTime LastCleaned { get; set; }
-        //Front desk check-in / check-out controls this
-        //public bool Inhabited { get; set; } // Conflicts with Orders checked in
 
         public Room(int roomNumber, int bedCount)
         {
