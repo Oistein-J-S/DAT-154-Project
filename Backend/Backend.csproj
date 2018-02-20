@@ -112,7 +112,7 @@
     <Compile Include="Hotel.cs" />
     <Compile Include="Rooms\Issue.cs" />
     <Compile Include="Unused\Maintenance.cs" />
-    <Compile Include="Order.cs" />
+    <Compile Include="Rooms\Order.cs" />
     <Compile Include="Rooms\Room.cs" />
     <Compile Include="Unused\Service.cs" />
     <Compile Include="Unused\Employee.cs" />

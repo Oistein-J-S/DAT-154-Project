@@ -21,7 +21,7 @@ namespace Backend
         bool CheckedOut;
         List<Order> Orders;
 
-        public Booking(int bookingId, Customer customer, DateTime dateFrom, DateTime dateTo, Room room)
+        public Booking(int bookingId, Customer customer, DateTime dateFrom, DateTime dateTo)
         {
             BookingId = bookingId;
             Customer = customer;
@@ -33,38 +33,58 @@ namespace Backend
 
         }
 
-        public void ChargeRoom(int amount)
-        {
-            Balance += amount;
-        }
+        // TODO Order room service
+        // TODO Uppdate a room service order
 
-        public void Settle()
+        /**
+        * Payment. Retruns false if payment did not go through.
+        */
+        public bool Settle()
         {
             //If payment is OK
-            if (Charge()) { 
-            Balance = 0;
+            if (Charge(Balance)) { 
+                Balance = 0;
+                return true;
             }
+            // something went wrong
+            return false;
         }
 
-        public bool Charge()
+        /**
+         * Checkin, returns fase if not inside reservation time.
+         */
+        public bool CheckIn()
         {
-            //Will not be implemented
-            return true;
-        }
-        public void CheckIn()
-        {
-            CheckedIn = true;
+            if (DateTime.Now >= DateFrom && DateTime.Now <= DateTo) //Within reservation time
+            {
+                CheckedIn = true;
+                return true;
+            }
+            // something is not right
+            return false;
         }
 
+        /**
+         * Checkout, NB does not return annything if failed
+         */
         public void CheckOut()
         {
-            foreach (Order o in Room.Orders) {
-                if (o.Fulfilled > new DateTime(1970,1,1)) {
+            foreach (Order o in Orders) {
+                if (o.IsFulfilled()) {// If order has been delivered
                     Balance += o.Total;
                         }
             }
-            Settle();
-            CheckedOut = true;
+            if (Settle())
+            {
+                CheckedOut = true;
+            }
+        }
+
+        // Method for payment
+        private bool Charge(int sum)
+        {
+            // Payment code goes here
+            return true;// Assume payment goes through
         }
     }
 }
