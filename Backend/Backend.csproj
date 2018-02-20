@@ -106,9 +106,9 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Booking.cs" />
+    <Compile Include="Rooms\Booking.cs" />
     <Compile Include="Unused\Cleaning.cs" />
-    <Compile Include="Customer.cs" />
+    <Compile Include="Rooms\Customer.cs" />
     <Compile Include="Hotel.cs" />
     <Compile Include="Rooms\Issue.cs" />
     <Compile Include="Unused\Maintenance.cs" />

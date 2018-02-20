@@ -8,10 +8,7 @@ namespace Backend
 {
     class Customer
     {
-
-
         int Id { get; set; }
-
         string FirstName { get; set; }
         string LastName { get; set; }
         int Balance { get; set; }
