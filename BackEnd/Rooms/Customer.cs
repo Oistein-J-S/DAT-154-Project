@@ -11,18 +11,24 @@ namespace Backend
      */
     class Customer
     {
-        int Id { get; set; }
-        string FirstName { get; set; }
-        string LastName { get; set; }
-        int Balance { get; set; }
+        private int id;
+        private string firstName;
+        private string lastName;
+        private int balance;
+
+        public int Id { get => id; set => id = value; }
+        public string FirstName { get => firstName; set => firstName = value; }
+        public string LastName { get => lastName; set => lastName = value; }
+        public int Balance { get => balance; set => balance = value; }
+
         // TODO pasword
 
         public Customer(int id, string firstName, string lastName, int balance)
         {
-            Id = id;
-            FirstName = firstName;
-            LastName = lastName;
-            Balance = balance;
+            this.id = id;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.balance = balance;
         }
     }
 }

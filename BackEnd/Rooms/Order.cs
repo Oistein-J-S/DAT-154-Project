@@ -11,39 +11,58 @@ namespace Backend
      */
     class Order
     {
-        List<string> Items;
-        int Total { get; set; }
-        DateTime Created { get; set; }
-        DateTime Fulfilled { get; set; }
+        // Declarations
+        private List<string> items;
+        private int total;
+        private DateTime created;
+        private DateTime? fulfilled; // nullable DateTime
+
+        //Best practice properties
+        public List<string> Items { get => Items;}
+        public int Total { get => total; }
+        public DateTime Created { get => Created;}
+        public DateTime? Fulfilled { get => Fulfilled;} //NB can be null!!
+
 
         public Order (List<string> items, int total)
         {
-            Items = items;
-            Fulfilled = new DateTime(1970, 1, 1);
-            Total = total;
-            Created = DateTime.Now;
+            this.items = items;
+            this.total = total;
+            created = DateTime.Now;
         }
         
         public bool AddItem(string item, int cost)
         {
             if (!IsFulfilled())// Not fulfilled, ok
             {
-                Items.Add(item);
-                Total += cost;
+                items.Add(item);
+                total += cost;
                 return true;
             }
             // The order is completed, can not add items
             return false;
         }
 
-        public void Fulfill()
+
+        /**
+         * fulfils this order if not allready fulfiled
+         */
+        public bool Fulfill()
         {
-            Fulfilled = DateTime.Now;
+            if (!IsFulfilled())
+            {
+                fulfilled = DateTime.Now;
+                return true;
+            }
+            return false;
         }
 
+        /**
+         * Returns true if this order has been completed
+         */
         public bool IsFulfilled()
         {
-            return Fulfilled > new DateTime(1970, 1, 1);
+            return fulfilled.HasValue;
         }
     }
 }

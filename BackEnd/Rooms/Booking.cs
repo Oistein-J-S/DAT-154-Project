@@ -12,29 +12,68 @@ namespace Backend
      */
     class Booking
     {
-        int BookingId { get; set; }
-        Customer Customer { get; set; }
-        int Balance { get; set; }
-        DateTime DateFrom { get; set; }
-        DateTime DateTo { get; set; }
-        bool CheckedIn;
-        bool CheckedOut;
-        List<Order> Orders;
+        //Declarations
+        private int bookingId;
+        private Customer customer;
+        private int balance;
+        private DateTime dateFrom;
+        private DateTime dateTo;
+        private bool checkedIn;
+        private bool checkedOut;
+        private List<Order> orders;
+
+        //Propperties
+        public int BookingId { get => bookingId;}
+        internal Customer Customer { get => customer; set => customer = value; }
+        public int Balance { get => balance; set => balance = value; }
+        public DateTime DateFrom { get => dateFrom;}
+        public DateTime DateTo { get => dateTo;}
+        public bool CheckedIn { get => checkedIn;}
+        public bool CheckedOut { get => checkedOut;}
+        internal List<Order> Orders { get => orders;}
 
         public Booking(int bookingId, Customer customer, DateTime dateFrom, DateTime dateTo)
         {
-            BookingId = bookingId;
-            Customer = customer;
-            DateFrom = dateFrom;
-            DateTo = dateTo;
-            Balance = 0;
-            CheckedIn = false;
-            CheckedOut = false;
+            this.bookingId = bookingId;
+            this.customer = customer;
+            this.dateFrom = dateFrom;
+            this.dateTo = dateTo;
+            balance = 0;
+            checkedIn = false;
+            checkedOut = false;
 
         }
 
-        // TODO Order room service
-        // TODO Uppdate a room service order
+        // Creates a new romservice item
+        public void OrderRoomService(List<string> items, int cost)
+        {
+            Orders.Add(new Order(items, cost));
+        }
+
+        public List<Order> getActiveService()
+        {
+            List<Order> active = new List<Order>();
+            foreach(Order o in Orders)
+            {
+                if (!o.IsFulfilled())// this request is active
+                {
+                    active.Add(o);
+                }
+            }
+            return active;
+        }
+
+        public bool ChangeDate(DateTime dateFrom, DateTime dateTo)
+        {
+            if (dateFrom < dateTo)
+            {
+                this.dateFrom = dateFrom;
+                this.dateTo = dateTo;
+                return true;
+            }
+            // eroneus dates
+            return false;
+        } 
 
         /**
         * Payment. Retruns false if payment did not go through.
@@ -42,8 +81,8 @@ namespace Backend
         public bool Settle()
         {
             //If payment is OK
-            if (Charge(Balance)) { 
-                Balance = 0;
+            if (Charge(balance)) { 
+                balance = 0;
                 return true;
             }
             // something went wrong
@@ -57,7 +96,7 @@ namespace Backend
         {
             if (DateTime.Now >= DateFrom && DateTime.Now <= DateTo) //Within reservation time
             {
-                CheckedIn = true;
+                checkedIn = true;
                 return true;
             }
             // something is not right
@@ -71,12 +110,12 @@ namespace Backend
         {
             foreach (Order o in Orders) {
                 if (o.IsFulfilled()) {// If order has been delivered
-                    Balance += o.Total;
+                    balance += o.Total;
                         }
             }
             if (Settle())
             {
-                CheckedOut = true;
+                checkedOut = true;
             }
         }
 

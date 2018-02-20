@@ -11,19 +11,39 @@ namespace Backend
      */
     class Issue
     {
-        string Description { get; set; }
-        DateTime Created { get; }
-        DateTime Completed { get; set; }
-        
+        //Declarations
+        private string description;
+        private DateTime created;
+        private DateTime? completed;
+
+        // Properties
+        public string Description { get => description;}
+        public DateTime Created { get => created;}
+        public DateTime? Completed { get => completed;}
+
         public Issue(string description)
         {
-            Description = description;
-            Created = DateTime.Today;
+            this.description = description;
+            created = DateTime.Today;
         }
 
+        /**
+         * Alter the description of an unfinished maintenence task
+         */
+        public bool changeDescription(string description)
+        {
+            if (!completed.HasValue)//the maitenence is not complete
+            {
+                this.description = description;
+                return true;
+            }
+            // can not change a finished task
+            return false;
+        }
+        
         public void Resolve()  // Resolves the issue making it inactive
         {
-            Completed = DateTime.Now;
+            completed = DateTime.Now;
         }
     }
 
