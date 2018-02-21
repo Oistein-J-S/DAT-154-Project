@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LobbyDesk
 {
-    public partial class Form1 : Form
+    public partial class LobbyDesk : Form
     {
-        public Form1()
+        public LobbyDesk()
         {
             InitializeComponent();
             panel1.Controls.Add(label1_1);
