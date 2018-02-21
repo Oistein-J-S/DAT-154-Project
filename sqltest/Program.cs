@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Text;
+using Objects;
 
 namespace sqltest
 {
