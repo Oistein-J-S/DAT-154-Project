@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Text;
-using Backend;
+using Objects;
 
 namespace sqltest
 {
@@ -27,6 +27,7 @@ namespace sqltest
 
                     connection.Open();
                     StringBuilder sb = new StringBuilder();
+                    /* 
                     sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
                     sb.Append("FROM [SalesLT].[ProductCategory] pc ");
                     sb.Append("JOIN [SalesLT].[Product] p ");
@@ -43,6 +44,7 @@ namespace sqltest
                             }
                         }
                     }
+                    */
                 }
             }
             catch (SqlException e)

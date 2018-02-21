@@ -1,0 +1,12 @@
+﻿@page
+@model LoginModel
+@{
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@Model.Message</h3>
+<form action="/">
+    Brukernavn/mail:    <input type="text" name="username" /> <br />
+    Passord:            <input type="password" name="pwd" /><br />
+    <input type="submit" value="Submit">
+    <input type="reset">
+</form>

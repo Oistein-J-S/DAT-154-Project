@@ -106,20 +106,20 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Rooms\Booking.cs" />
+    <Compile Include="Classes\Booking.cs" />
     <Compile Include="Unused\Cleaning.cs" />
-    <Compile Include="Rooms\Customer.cs" />
-    <Compile Include="Hotel.cs" />
-    <Compile Include="Rooms\Issue.cs" />
+    <Compile Include="Classes\Customer.cs" />
+    <Compile Include="Classes\Hotel.cs" />
+    <Compile Include="Classes\Issue.cs" />
     <Compile Include="Unused\Maintenance.cs" />
-    <Compile Include="Rooms\Order.cs" />
-    <Compile Include="Rooms\Room.cs" />
+    <Compile Include="Classes\Order.cs" />
+    <Compile Include="Classes\Room.cs" />
     <Compile Include="Unused\Service.cs" />
     <Compile Include="Unused\Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rooms\Standard.cs" />
-    <Compile Include="Rooms\Suite.cs" />
-    <Compile Include="Rooms\Superior.cs" />
+    <Compile Include="Classes\Standard.cs" />
+    <Compile Include="Classes\Suite.cs" />
+    <Compile Include="Classes\Superior.cs" />
     <EmbeddedResource Include="Properties\Backend.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -127,7 +127,9 @@
       <Version>6.0.6</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
