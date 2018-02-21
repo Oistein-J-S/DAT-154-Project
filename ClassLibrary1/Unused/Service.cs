@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Backend
+namespace Objects
 {
     class Service : Employee
     {
@@ -12,7 +12,7 @@ namespace Backend
         {
 
         }
-        public List<Order> GetServiceOrders() { }
+        //public List<Order> GetServiceOrders() { }
         public void CompleteOrder(Order order) { }
     }
 }

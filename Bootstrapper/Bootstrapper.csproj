@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FCE30F91-868F-4AF7-9C88-D4441DA3B752}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ObjectContainerDLL</RootNamespace>
-    <AssemblyName>ObjectContainerDLL</AssemblyName>
+    <ProjectGuid>{13B36244-A79D-41D0-A752-CA1225DC0E07}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Bootstrapper</RootNamespace>
+    <AssemblyName>Bootstrapper</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,20 +42,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Booking.cs" />
-    <Compile Include="Customer.cs" />
-    <Compile Include="Hotel.cs" />
-    <Compile Include="Issue.cs" />
-    <Compile Include="Order.cs" />
+    <Compile Include="Strapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Room.cs" />
-    <Compile Include="Standard.cs" />
-    <Compile Include="Suite.cs" />
-    <Compile Include="Superior.cs" />
-    <Compile Include="Unused\Cleaning.cs" />
-    <Compile Include="Unused\Employee.cs" />
-    <Compile Include="Unused\Maintenance.cs" />
-    <Compile Include="Unused\Service.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Backend\Backend.csproj">
+      <Project>{80e4e408-2d70-4a33-8214-c1b20fb8023c}</Project>
+      <Name>Backend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary1\ObjectContainerDLL.csproj">
+      <Project>{fce30f91-868f-4af7-9c88-d4441da3b752}</Project>
+      <Name>ObjectContainerDLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LobbyDesk\LobbyDesk.csproj">
+      <Project>{c2da35b2-81c4-4882-8bcd-ce5c247a3dfc}</Project>
+      <Name>LobbyDesk</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sqltest\DBMGR.csproj">
+      <Project>{96f64da6-ddec-4524-b3f0-4e9a85f09b21}</Project>
+      <Name>DBMGR</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApplication1\CustomerWeb.csproj">
+      <Project>{0232e3d5-dfe1-4db3-9cc8-da93652238a5}</Project>
+      <Name>CustomerWeb</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Backend
+namespace Objects
 {
     class Maintenance : Employee
     {
@@ -13,7 +13,7 @@ namespace Backend
             
         }
         //Model returns issues, alternatively could give list of rooms with issues
-        public List<Task> GetIssues() { }
+        //public List<Task> GetIssues() { }
         public void StartIssue(Issue issue) { }
         public void ResolveIssue(Issue issue) { }
 
