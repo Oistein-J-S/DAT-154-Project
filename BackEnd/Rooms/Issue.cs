@@ -9,7 +9,8 @@ namespace Backend
     /**
      *A maintenence problem for a room. 
      */
-    class Issue
+    class 
+
     {
         //Declarations
         private string description;

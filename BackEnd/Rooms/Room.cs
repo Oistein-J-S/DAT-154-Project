@@ -10,6 +10,7 @@ namespace Backend
     {
         int RoomNumber { get; set; } //make ENUM?
         int BedCount { get; set; } //make ENUM?
+        int Size { get; set; }
 
         List<Order> Orders { get; }
         List<Issue> Issues { get; } //Maintenance issues
@@ -17,10 +18,11 @@ namespace Backend
 
         DateTime LastCleaned { get; set; }
 
-        public Room(int roomNumber, int bedCount)
+        public Room(int roomNumber, int bedCount, int size)
         {
             RoomNumber = roomNumber;
             BedCount = bedCount;
+            Size = size;
             LastCleaned = new DateTime(1970, 1, 1);
         }
         public void RaiseIssue(Issue issue)

@@ -22,7 +22,7 @@ namespace Backend
         }
         public void DeleteRoom(Room room)
         {
-            rooms.Remove(room room);
+            rooms.Remove(room);
         }
     }
 }

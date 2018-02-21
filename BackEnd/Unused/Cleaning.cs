@@ -15,6 +15,9 @@ namespace Backend
         public void StartCleaning(Room room) { }
         public void FinishCleaning(Room room) { }
 
-        public List<Room> GetDirtyRooms() {}
+        public List<Room> GetDirtyRooms()
+        {
+            return null;
+        }
     }
 }

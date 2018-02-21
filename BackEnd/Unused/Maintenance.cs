@@ -13,7 +13,10 @@ namespace Backend
             
         }
         //Model returns issues, alternatively could give list of rooms with issues
-        public List<Task> GetIssues() { }
+        public List<Task> GetIssues()
+        {
+            return null;
+        }
         public void StartIssue(Issue issue) { }
         public void ResolveIssue(Issue issue) { }
 
