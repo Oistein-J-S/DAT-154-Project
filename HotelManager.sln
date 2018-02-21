@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalApp", "UniversalApp\UniversalApp.csproj", "{C5F7BD9C-E777-4128-9903-843358398755}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobbyDesk", "LobbyDesk\Lobb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sqltest", "sqltest\sqltest.csproj", "{96F64DA6-DDEC-4524-B3F0-4E9A85F09B21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerWeb", "WebApplication1\CustomerWeb.csproj", "{0232E3D5-DFE1-4DB3-9CC8-DA93652238A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerWeb", "WebApplication1\CustomerWeb.csproj", "{0232E3D5-DFE1-4DB3-9CC8-DA93652238A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

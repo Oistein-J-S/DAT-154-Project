@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
+    <link rel="shortcut icon" href="~/images/icon.ico"
+          type="image/x-icon" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApplication1</title>
+    <title>@ViewData["Title"] - Velkommen til Kodehotellet</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -26,13 +28,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-page="/Index" class="navbar-brand">WebApplication1</a>
+                <a asp-page="/Index" class="navbar-brand">Kodehotellet</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-page="/Index">Home</a></li>
-                    <li><a asp-page="/About">About</a></li>
-                    <li><a asp-page="/Contact">Contact</a></li>
+                    <li><a asp-page="/Index">Hjem</a></li>
+                    <li><a asp-page="/About">Om oss</a></li>
+                    <li><a asp-page="/Contact">Kontakt oss</a></li>
+                    <li><a asp-page="/Login">Logg inn</a></li>
                 </ul>
             </div>
         </div>
@@ -41,7 +44,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - WebApplication1</p>
+            <p>&copy; 2018 - Kodehotellet</p>
         </footer>
     </div>
 
