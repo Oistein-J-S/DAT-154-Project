@@ -82,7 +82,7 @@ namespace Backend
         {
             //If payment is OK
             if (Charge(balance)) { 
-                balance = 0;
+                Balance = 0;
                 return true;
             }
             // something went wrong
@@ -110,13 +110,37 @@ namespace Backend
         {
             foreach (Order o in Orders) {
                 if (o.IsFulfilled()) {// If order has been delivered
-                    balance += o.Total;
+                    Balance += o.Total;
                         }
             }
             if (Settle())
             {
                 checkedOut = true;
             }
+        }
+
+        /**
+         * Checks if the booking dates overlaps
+         * @ param Booking
+         * @ returns: true if they do
+         * false otherwise
+         */
+        public bool overlaps(Booking booking)
+        {
+            if ((dateFrom <= booking.DateFrom && dateTo > booking.DateFrom))// if from is within this reservation 
+            {
+                return true;
+            }
+            else if (dateFrom < booking.DateTo || dateTo >= booking.DateTo) //or if to is within this reservation
+            {
+                return true;
+            }
+            else if (dateFrom >= booking.DateFrom || dateTo <= booking.DateTo) // or if the reservation in it's entirety is within the new reservation
+            {
+                return true;
+            }
+            //there is no overlap
+            return false;
         }
 
         // Method for payment
