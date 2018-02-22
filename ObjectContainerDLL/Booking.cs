@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Objects
+namespace ObjectContainerDLL
 {
     /**
      * A booking is stored in a room and represents a customers reservation of a room.
@@ -30,7 +30,7 @@ namespace Objects
         public DateTime DateTo { get => dateTo;}
         public bool CheckedIn { get => checkedIn;}
         public bool CheckedOut { get => checkedOut;}
-        internal List<Order> Orders { get => orders;}
+        public List<Order> Orders { get => Orders;}
 
         public Booking(int bookingId, Customer customer, DateTime dateFrom, DateTime dateTo)
         {
@@ -41,13 +41,13 @@ namespace Objects
             balance = 0;
             checkedIn = false;
             checkedOut = false;
-
+            orders = new List<Order>();
         }
 
         // Creates a new romservice item
         public void OrderRoomService(List<string> items, int cost)
         {
-            Orders.Add(new Order(items, cost));
+            orders.Add(new Order(items, cost));
         }
 
         public List<Order> getActiveService()

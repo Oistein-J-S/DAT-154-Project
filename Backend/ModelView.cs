@@ -13,15 +13,31 @@ namespace Backend
     public class ModelView
     {
         //Declarations
-        private Modell model;
+        private Model model;
 
         //TODO Creator
         public ModelView()
         {
-            model = new Modell();
-            //TODO create Modell
+            model = new Model();
+
         }
         //TODO functions
+
+
+
+        /*
+         * Ideas for functions:
+         * "getFreeRoom" returns list of room with no booking
+         * "getOccupiedRoom" returns list of room with booking
+         * "makeBooking" takes in info (subs to event from views) from views (web + desktop), sends it to Model for use
+         * "checkIn" and "checkOut" 
+         * "deleteBooking"
+         * "searchBooking" takes info from event, sends info to model, model returns list, send event with list
+         * "viewBooking" get info from app, search model, return object
+         * "raiseIssue" subs to even from desktop and app
+         * "payment"
+         *  
+         */ 
 
     }
 }

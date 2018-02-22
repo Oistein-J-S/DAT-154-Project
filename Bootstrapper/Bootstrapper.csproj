@@ -53,17 +53,9 @@
       <Project>{80e4e408-2d70-4a33-8214-c1b20fb8023c}</Project>
       <Name>Backend</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ClassLibrary1\ObjectContainerDLL.csproj">
-      <Project>{fce30f91-868f-4af7-9c88-d4441da3b752}</Project>
-      <Name>ObjectContainerDLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LobbyDesk\LobbyDesk.csproj">
       <Project>{c2da35b2-81c4-4882-8bcd-ce5c247a3dfc}</Project>
       <Name>LobbyDesk</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\sqltest\DBMGR.csproj">
-      <Project>{96f64da6-ddec-4524-b3f0-4e9a85f09b21}</Project>
-      <Name>DBMGR</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
