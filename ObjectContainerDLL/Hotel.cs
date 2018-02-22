@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjectContainerDLL
 {
-    class Hotel
+    public class Hotel
     {
         private string name;
         private string address;

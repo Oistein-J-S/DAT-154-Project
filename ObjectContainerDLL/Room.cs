@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjectContainerDLL
 {
-    class Room
+    public class Room
     {
         private int roomNumber; //make ENUM?
         private int bedCount; //make ENUM?

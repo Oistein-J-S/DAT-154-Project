@@ -9,7 +9,7 @@ namespace ObjectContainerDLL
     /**
      * A room service order. Belongs to a booking.
      */
-    class Order
+    public class Order
     {
         // Declarations
         private List<string> items;

@@ -10,7 +10,7 @@ namespace ObjectContainerDLL
      * A booking is stored in a room and represents a customers reservation of a room.
      * Each booking handles the customer and the customers room service requests
      */
-    class Booking
+    public class Booking
     {
         //Declarations
         private int bookingId;
@@ -31,6 +31,8 @@ namespace ObjectContainerDLL
         public bool CheckedIn { get => checkedIn;}
         public bool CheckedOut { get => checkedOut;}
         public List<Order> Orders { get => Orders;}
+
+        public ICollection<Booking> Bookings { get; set; }
 
         public Booking(int bookingId, Customer customer, DateTime dateFrom, DateTime dateTo)
         {

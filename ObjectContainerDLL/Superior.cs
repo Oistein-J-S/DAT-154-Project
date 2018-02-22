@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjectContainerDLL
 {
-    class Superior : Room
+    public class Superior : Room
 {
     const int ROOM_SZ = 25;
         //public Superior(int roomNumber, int bedCount) : base(roomNumber, bedCount, ROOM_SZ) { }

@@ -9,7 +9,7 @@ namespace ObjectContainerDLL
     /**
      * Base customer class. Used with bookings
      */
-    class Customer
+    public class Customer
     {
         private int id;
         private string firstName;

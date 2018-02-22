@@ -9,7 +9,7 @@ namespace ObjectContainerDLL
     /**
      *A maintenence problem for a room. 
      */
-    class Issue
+    public class Issue
     {
         //Declarations
         private string description;
