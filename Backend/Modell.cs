@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DBMGR;
 
 namespace Backend
 {
@@ -13,7 +14,12 @@ namespace Backend
     class Modell
     {
         //TODO Declarations
+        
         //TODO Creator
+        public Modell()
+        {
+
+        }
             //TODO create DB manager
         //TODO functions
     }

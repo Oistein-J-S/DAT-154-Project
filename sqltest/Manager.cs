@@ -3,9 +3,9 @@ using System.Data.SqlClient;
 using System.Text;
 using Objects;
 
-namespace sqltest
+namespace DBMGR
 {
-    class Program
+    class Manager
     {
         /*
          * How to connect to the database. Log in information is seen as variables of the SqlConnectionStringBuilder object
