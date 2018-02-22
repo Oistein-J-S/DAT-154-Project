@@ -10,7 +10,7 @@ namespace Backend
      * Enteprise logic class
      * On create: create new DB manager (cascading creation)
      */
-    class Modell
+    class Model
     {
         //TODO Declarations
         //TODO Creator
