@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ObjectContainerDLL
 {
-    class Item
+    public class Item
     {
-        public int Value;
-        public string Name;
+        public int Value { get; set; }
+        public string Name { get; set; }
 
         public Item(int value, string name)
         {

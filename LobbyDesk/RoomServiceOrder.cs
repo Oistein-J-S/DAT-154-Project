@@ -13,7 +13,7 @@ namespace LobbyDesk
 {
     public partial class RoomServiceOrder : Form
     {
-        List<string> l;
+        List<Item> l;
         int total;
         public RoomServiceOrder()
         {
@@ -25,13 +25,15 @@ namespace LobbyDesk
 
         private void RoomServiceSaveButton_Click(object sender, EventArgs e)
         {
-            Order o = new Order(l,total);
+            Order o = new Order(l);
         }
 
         private void RoomServiceItemAddButton_Click(object sender, EventArgs e)
         {
-            l.Add(RoomServiceItemPickComboBox.SelectedText);
-            total += RoomServiceItemPickComboBox.SelectedItem.Value;
+            l.Add((Item) RoomServiceItemPickComboBox.SelectedItem);
+            Item i = (Item)RoomServiceItemPickComboBox.SelectedItem;
+            total += i.Value;
+            RoomServiceAmountTextBox.Update();
         }
     }
 }

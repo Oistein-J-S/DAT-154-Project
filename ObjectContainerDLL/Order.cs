@@ -18,15 +18,15 @@ namespace ObjectContainerDLL
         private DateTime? fulfilled; // nullable DateTime
 
         //Best practice properties
-        public ICollection<Item> Items { get => Items;}
+        public ICollection<Item> Items { get => Items; }
         public int Total { get => total; }
         public DateTime Created { get => Created;}
         public DateTime? Fulfilled { get => Fulfilled;} //NB can be null!!
 
 
-        public Order (ICollection<Item> items)
+        public Order (ICollection<Item> itemlist)
         {
-            this.items = items;
+            items = itemlist;
             foreach (Item i in items)
             {
                 total = +i.Value;
