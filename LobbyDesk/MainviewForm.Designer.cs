@@ -49,6 +49,7 @@
             this.CheckInTodayListBox.Name = "CheckInTodayListBox";
             this.CheckInTodayListBox.Size = new System.Drawing.Size(258, 394);
             this.CheckInTodayListBox.TabIndex = 0;
+            this.CheckInTodayListBox.SelectedIndexChanged += new System.EventHandler(this.CheckInTodayListBox_SelectedIndexChanged);
             // 
             // CheckInTodayLAbel
             // 
@@ -66,6 +67,7 @@
             this.CheckOutTodayListBox.Name = "CheckOutTodayListBox";
             this.CheckOutTodayListBox.Size = new System.Drawing.Size(258, 394);
             this.CheckOutTodayListBox.TabIndex = 2;
+            this.CheckOutTodayListBox.SelectedIndexChanged += new System.EventHandler(this.CheckOutTodayListBox_SelectedIndexChanged);
             // 
             // CheckOutTodayLabel
             // 
@@ -113,6 +115,7 @@
             this.SearchBookingButton.TabIndex = 7;
             this.SearchBookingButton.Text = "Search bookings...";
             this.SearchBookingButton.UseVisualStyleBackColor = true;
+            this.SearchBookingButton.Click += new System.EventHandler(this.SearchBookingButton_Click);
             // 
             // RemoveBookingButton
             // 

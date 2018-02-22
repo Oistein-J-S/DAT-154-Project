@@ -17,6 +17,11 @@ namespace LobbyDesk
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainviewForm());
+
         }
+
+
     }
+
 }
+

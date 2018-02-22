@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SearchBookings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchBookings.Designer.cs">
+      <DependentUpon>SearchBookings.cs</DependentUpon>
+    </Compile>
     <Compile Include="RaiseIssue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="SearchBookings.resx">
+      <DependentUpon>SearchBookings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RaiseIssue.resx">
       <DependentUpon>RaiseIssue.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +113,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ObjectContainerDLL\ObjectContainerDLL.csproj">
+      <Project>{fce30f91-868f-4af7-9c88-d4441da3b752}</Project>
+      <Name>ObjectContainerDLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
