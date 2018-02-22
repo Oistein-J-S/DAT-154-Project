@@ -49,6 +49,7 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.LoadCustomerButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -248,6 +249,7 @@
             this.SaveButton.TabIndex = 21;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // CancelButton
             // 
@@ -258,11 +260,22 @@
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             // 
+            // LoadCustomerButton
+            // 
+            this.LoadCustomerButton.Location = new System.Drawing.Point(196, 226);
+            this.LoadCustomerButton.Name = "LoadCustomerButton";
+            this.LoadCustomerButton.Size = new System.Drawing.Size(96, 23);
+            this.LoadCustomerButton.TabIndex = 23;
+            this.LoadCustomerButton.Text = "Load Customer...";
+            this.LoadCustomerButton.UseVisualStyleBackColor = true;
+            this.LoadCustomerButton.Click += new System.EventHandler(this.LoadCustomerButton_Click);
+            // 
             // BookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(473, 261);
+            this.Controls.Add(this.LoadCustomerButton);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.CancelButton);
@@ -298,5 +311,6 @@
         private System.Windows.Forms.ComboBox RoomTypeComboBox;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button LoadCustomerButton;
     }
 }

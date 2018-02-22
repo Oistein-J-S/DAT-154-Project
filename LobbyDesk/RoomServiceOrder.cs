@@ -38,5 +38,9 @@ namespace LobbyDesk
             RoomServiceAmountTextBox.Update();
         }
 
+        private void RoomServiceItemDeleteButton_Click(object sender, EventArgs e)
+        {
+            l.Remove((Item)RoomServiceItemPickComboBox.SelectedItem);
+        }
     }
 }

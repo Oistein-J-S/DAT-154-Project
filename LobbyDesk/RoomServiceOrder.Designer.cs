@@ -82,6 +82,7 @@
             this.RoomServiceItemDeleteButton.TabIndex = 4;
             this.RoomServiceItemDeleteButton.Text = "Delete";
             this.RoomServiceItemDeleteButton.UseVisualStyleBackColor = true;
+            this.RoomServiceItemDeleteButton.Click += new System.EventHandler(this.RoomServiceItemDeleteButton_Click);
             // 
             // RoomServiceAmountLabel
             // 

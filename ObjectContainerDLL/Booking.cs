@@ -38,6 +38,18 @@ namespace ObjectContainerDLL
             Orders = new List<Order>();
         }
 
+        public Booking(Customer customer, DateTime dateFrom, DateTime dateTo)
+        {
+            Customer = customer;
+            DateFrom = dateFrom;
+            DateTo = dateTo;
+            Balance = 0;
+            CheckedIn = false;
+            CheckedOut = false;
+            Orders = new List<Order>();
+        }
+
+
         // Creates a new romservice item
         public void OrderRoomService(List<string> items, int cost)
         {
