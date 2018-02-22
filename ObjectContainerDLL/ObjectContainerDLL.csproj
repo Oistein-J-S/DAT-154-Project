@@ -172,6 +172,8 @@
   <ItemGroup>
     <Compile Include="Booking.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="Data\DbInitializer.cs" />
+    <Compile Include="Data\HotelContext.cs" />
     <Compile Include="Hotel.cs" />
     <Compile Include="Issue.cs" />
     <Compile Include="Order.cs" />

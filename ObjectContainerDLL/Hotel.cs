@@ -8,13 +8,10 @@ namespace ObjectContainerDLL
 {
     public class Hotel
     {
-        private string name;
-        private string address;
-        private List<Room> rooms;
-
-        public string Name { get => name; set => name = value; }
-        public string Address { get => address; set => address = value; }
-        internal List<Room> Rooms { get => rooms; set => rooms = value; }
+        []
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public ICollection<Room> Rooms { get; set; }
 
         public Hotel(string name, string address)
         {
@@ -38,11 +35,3 @@ namespace ObjectContainerDLL
         }
     }
 }
-
-/**
- * internal List<Room> Rooms
- *  {
- *    get => rooms;
- *    set { rooms = value; }
- *  }
- */

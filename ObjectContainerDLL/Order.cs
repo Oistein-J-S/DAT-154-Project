@@ -12,13 +12,13 @@ namespace ObjectContainerDLL
     public class Order
     {
         // Declarations
-        private List<string> items;
+        private ICollection<string> items;
         private int total;
         private DateTime created;
         private DateTime? fulfilled; // nullable DateTime
 
         //Best practice properties
-        public List<string> Items { get => Items;}
+        public ICollection<string> Items { get => Items;}
         public int Total { get => total; }
         public DateTime Created { get => Created;}
         public DateTime? Fulfilled { get => Fulfilled;} //NB can be null!!

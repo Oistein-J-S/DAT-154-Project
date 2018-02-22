@@ -11,20 +11,15 @@ namespace ObjectContainerDLL
      */
     public class Issue
     {
-        //Declarations
-        private string description;
-        private DateTime created;
-        private DateTime? completed;
-
         // Properties
-        public string Description { get => description;}
-        public DateTime Created { get => created;}
-        public DateTime? Completed { get => completed;}
+        public string Description { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime? Completed { get; set; }
 
         public Issue(string description)
         {
-            this.description = description;
-            created = DateTime.Today;
+            this.Description = description;
+            Created = DateTime.Now;
         }
 
         /**
@@ -32,9 +27,9 @@ namespace ObjectContainerDLL
          */
         public bool changeDescription(string description)
         {
-            if (!completed.HasValue)//the maitenence is not complete
+            if (!Completed.HasValue)//the maitenence is not complete
             {
-                this.description = description;
+                Description = description;
                 return true;
             }
             // can not change a finished task
@@ -43,7 +38,7 @@ namespace ObjectContainerDLL
         
         public void Resolve()  // Resolves the issue making it inactive
         {
-            completed = DateTime.Now;
+            Completed = DateTime.Now;
         }
     }
 

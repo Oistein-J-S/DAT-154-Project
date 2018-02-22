@@ -1,36 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ObjectContainerDLL
 {
-    public class Room
+    public abstract class Room
     {
-        private int roomNumber; //make ENUM?
-        private int bedCount; //make ENUM?
-        private List<Booking> bookings;
-        private List<Issue> issues; //Maintenance issues
-        private DateTime lastCleaned;
-
-        public int RoomNumber{
-            get => roomNumber;
-            set { if (roomNumber >= 0) {roomNumber = value;} }
-        }
-        public int BedCount {
-            get => bedCount;
-            set { if (BedCount >= 0) {bedCount = value;} }
-        }
-        public List<Booking> Bookings { get => bookings; set => bookings = value; }
-        public List<Issue> Issues { get => issues; set => issues = value; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        private int RoomNumber { get; set; } //make ENUM?
+        private int BedCount { get; set; } //make ENUM?
+        private ICollection<Booking> Bookings { get; set; }
+        private ICollection<Issue> Issues { get; set; } //Maintenance issues
+        private DateTime LastCleaned { get; set; }
 
 
         public Room(int roomNumber, int bedCount)
         {
             RoomNumber = roomNumber;
             BedCount = bedCount;
-            lastCleaned = new DateTime(1970, 1, 1);
+            LastCleaned = new DateTime(1970, 1, 1);
         }
 
         public bool AddBooking(Booking booking)
@@ -58,11 +49,11 @@ namespace ObjectContainerDLL
         }
         public void Clean()
         {
-            lastCleaned = DateTime.Today;
+            LastCleaned = DateTime.Today;
         }
         public bool NeedsCleaning()
         {
-            return DateTime.Today == lastCleaned;
+            return DateTime.Today == LastCleaned;
         }
 }
 }
