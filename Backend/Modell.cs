@@ -14,7 +14,7 @@ namespace Backend
     class Modell
     {
         //TODO Declarations
-        
+        Manager dbManager;
         //TODO Creator
         public Modell()
         {
