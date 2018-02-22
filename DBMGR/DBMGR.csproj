@@ -111,11 +111,5 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\ObjectContainerDLL.csproj">
-      <Project>{fce30f91-868f-4af7-9c88-d4441da3b752}</Project>
-      <Name>ObjectContainerDLL</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
