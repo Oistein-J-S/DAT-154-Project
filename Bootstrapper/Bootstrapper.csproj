@@ -65,10 +65,6 @@
       <Project>{96f64da6-ddec-4524-b3f0-4e9a85f09b21}</Project>
       <Name>DBMGR</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebApplication1\CustomerWeb.csproj">
-      <Project>{0232e3d5-dfe1-4db3-9cc8-da93652238a5}</Project>
-      <Name>CustomerWeb</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

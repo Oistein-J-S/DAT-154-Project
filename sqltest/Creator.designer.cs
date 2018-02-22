@@ -51,7 +51,7 @@ namespace sqltest
     #endregion
 		
 		public CreatorDataContext() : 
-				base(global::sqltest.Properties.Settings.Default.Dat154ProjectConnectionString, mappingSource)
+				base(global::DBMGR.Properties.Settings.Default.Dat154ProjectConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
