@@ -14,7 +14,7 @@ namespace ObjectContainerDLL
     {
         //Declarations
         private int bookingId;
-        private Customer customer;
+        public Customer customer;
         private int balance;
         private DateTime dateFrom;
         private DateTime dateTo;

@@ -1,11 +1,6 @@
-﻿using System;
+﻿using ObjectContainerDLL;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LobbyDesk
@@ -15,7 +10,19 @@ namespace LobbyDesk
         public MainviewForm()
         {
             InitializeComponent();
+
+
+
         }
+        private void GetCheckOutsToday(object sender, EventArgs e)
+        {
+            CheckOutTodayListBox.DataSource = (List<Booking>)sender;
+        }
+        private void GetCheckInsToday(object sender, EventArgs e)
+        {
+            CheckInTodayListBox.DataSource = (List<Booking>)sender;
+        }
+
 
         private void CheckInButton_Click(object sender, EventArgs e)
         {
@@ -24,8 +31,14 @@ namespace LobbyDesk
 
         private void ViewBookingButton_Click(object sender, EventArgs e)
         {
-            Form f = new BookingForm();
-            f.Show();
+            if (CheckInTodayListBox.SelectedItem != null) { 
+                Form f = new BookingForm((Booking) CheckInTodayListBox.SelectedItem);
+                f.Show();
+            } else if (CheckOutTodayListBox.SelectedItem != null)
+            {
+                Form f = new BookingForm((Booking)CheckOutTodayListBox.SelectedItem);
+                f.Show();
+            }
         }
 
         private void NewBookingButton_Click(object sender, EventArgs e)
@@ -44,6 +57,22 @@ namespace LobbyDesk
         {
             Form f = new RaiseIssue();
             f.Show();
+        }
+
+        private void SearchBookingButton_Click(object sender, EventArgs e)
+        {
+            Form f = new SearchBookings();
+            f.Show();
+        }
+
+        private void CheckInTodayListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckOutTodayListBox.ClearSelected();
+        }
+
+        private void CheckOutTodayListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckInTodayListBox.ClearSelected();
         }
     }
 }
