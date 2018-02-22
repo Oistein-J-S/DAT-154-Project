@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C2DA35B2-81C4-4882-8BCD-CE5C247A3DFC}</ProjectGuid>
+    <ProjectGuid>{78502CCF-C7CD-4638-A22C-4F04EF7EEF04}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>LobbyDesk</RootNamespace>
     <AssemblyName>LobbyDesk</AssemblyName>
@@ -45,16 +45,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LobbyDesk.cs">
+    <Compile Include="RaiseIssue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LobbyDesk.Designer.cs">
-      <DependentUpon>LobbyDesk.cs</DependentUpon>
+    <Compile Include="RaiseIssue.Designer.cs">
+      <DependentUpon>RaiseIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoomServiceOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoomServiceOrder.Designer.cs">
+      <DependentUpon>RoomServiceOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainviewForm.Designer.cs">
+      <DependentUpon>MainviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookingForm.Designer.cs">
+      <DependentUpon>BookingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="LobbyDesk.resx">
-      <DependentUpon>LobbyDesk.cs</DependentUpon>
+    <EmbeddedResource Include="RaiseIssue.resx">
+      <DependentUpon>RaiseIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoomServiceOrder.resx">
+      <DependentUpon>RoomServiceOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainviewForm.resx">
+      <DependentUpon>MainviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookingForm.resx">
+      <DependentUpon>BookingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

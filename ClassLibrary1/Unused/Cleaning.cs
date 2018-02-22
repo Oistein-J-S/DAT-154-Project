@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Objects
+namespace Backend
 {
     class Cleaning : Employee
     {
@@ -15,6 +15,9 @@ namespace Objects
         public void StartCleaning(Room room) { }
         public void FinishCleaning(Room room) { }
 
-        //public List<Room> GetDirtyRooms() {}
+        public List<Room> GetDirtyRooms()
+        {
+            return null;
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace WebApplication1.Pages
         public string Message { get; set; }
         public void OnGet()
         {
-            Message = "";
+            Message = "Logg inn her";
         }
     }
 }
