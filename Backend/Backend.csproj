@@ -58,5 +58,11 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ObjectContainerDLL\ObjectContainerDLL.csproj">
+      <Project>{fce30f91-868f-4af7-9c88-d4441da3b752}</Project>
+      <Name>ObjectContainerDLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
