@@ -20,6 +20,8 @@ namespace LobbyDesk
             InitializeComponent();
             l = new List<Item>();
             total = 0;
+            this.CancelButton = RoomServiceCancelButton;
+            this.AcceptButton = RoomServiceSaveButton;
         }
 
 
@@ -35,5 +37,6 @@ namespace LobbyDesk
             total += i.Value;
             RoomServiceAmountTextBox.Update();
         }
+
     }
 }
