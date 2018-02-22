@@ -12,9 +12,15 @@ namespace Backend
      */
     public class ModelView
     {
-        //TODO Declarations
+        //Declarations
+        private Modell model;
+
         //TODO Creator
+        public ModelView()
+        {
+            model = new Modell();
             //TODO create Modell
+        }
         //TODO functions
 
     }

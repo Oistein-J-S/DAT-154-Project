@@ -18,6 +18,9 @@ namespace Bootstrapper
         {
             //Some pure fabrication!
             new ModelView(); // Model view creates the model that creates the DB manager that connects to the db that exists
+            Console.WriteLine("Starting backend");
+            Console.ReadKey();
+            //Console.ReadLine;
             //TODO the various Views?
         }
     }
