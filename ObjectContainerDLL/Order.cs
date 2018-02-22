@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Objects
+namespace ObjectContainerDLL
 {
     /**
      * A room service order. Belongs to a booking.

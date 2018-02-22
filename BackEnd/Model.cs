@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DBMGR;
+//using DBMGR;
+//using ObjectContainerDLL;
 
 namespace Backend
 {
@@ -13,14 +14,20 @@ namespace Backend
      */
     class Model
     {
-        //TODO Declarations
-        Manager dbManager;
-        //TODO Creator
-        public Modell()
+        //Declarations
+        //private Manager dbManager;
+        //private Booking bok;
+
+        //public Manager DbManager { get => dbManager; set => dbManager = value; }
+
+        //Creator
+        public Model()
         {
 
         }
-            //TODO create DB manager
+
+
+        //TODO create DB manager
         //TODO functions
     }
 }
