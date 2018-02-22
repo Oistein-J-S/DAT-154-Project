@@ -176,6 +176,7 @@
     <Compile Include="Data\HotelContext.cs" />
     <Compile Include="Hotel.cs" />
     <Compile Include="Issue.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

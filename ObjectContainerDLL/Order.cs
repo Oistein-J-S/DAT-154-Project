@@ -12,25 +12,30 @@ namespace ObjectContainerDLL
     public class Order
     {
         // Declarations
-        private ICollection<string> items;
+        private ICollection<Item> items;
         private int total;
         private DateTime created;
         private DateTime? fulfilled; // nullable DateTime
 
         //Best practice properties
-        public ICollection<string> Items { get => Items;}
+        public ICollection<Item> Items { get => Items;}
         public int Total { get => total; }
         public DateTime Created { get => Created;}
         public DateTime? Fulfilled { get => Fulfilled;} //NB can be null!!
 
 
-        public Order (List<string> items, int total)
+        public Order (ICollection<Item> items)
         {
             this.items = items;
-            this.total = total;
+            foreach (Item i in items)
+            {
+                total = +i.Value;
+            }
             created = DateTime.Now;
         }
-        
+
+        //Not needed, as only complete orders are sent.
+        /*
         public bool AddItem(string item, int cost)
         {
             if (!IsFulfilled())// Not fulfilled, ok
@@ -42,7 +47,7 @@ namespace ObjectContainerDLL
             // The order is completed, can not add items
             return false;
         }
-
+        */
 
         /**
          * fulfils this order if not allready fulfiled
