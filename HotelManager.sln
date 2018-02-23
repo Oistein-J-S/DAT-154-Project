@@ -1,13 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalApp", "UniversalApp\UniversalApp.csproj", "{C5F7BD9C-E777-4128-9903-843358398755}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobbyDesk", "LobbyDesk\LobbyDesk.csproj", "{78502CCF-C7CD-4638-A22C-4F04EF7EEF04}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootstrapper", "Bootstrapper\Bootstrapper.csproj", "{13B36244-A79D-41D0-A752-CA1225DC0E07}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FCE30F91-868F-4AF7-9C88-D4441DA3B752} = {FCE30F91-868F-4AF7-9C88-D4441DA3B752}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend", "Backend\Backend.csproj", "{80E4E408-2D70-4A33-8214-C1B20FB8023C}"
 EndProject
