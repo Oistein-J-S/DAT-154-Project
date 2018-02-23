@@ -211,6 +211,9 @@
   <ItemGroup>
     <Compile Include="Booking.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="Data\DbInitializer.cs" />
+    <Compile Include="Data\HotelContext.cs" />
+    <Compile Include="Data\Program.cs" />
     <Compile Include="Hotel.cs" />
     <Compile Include="Issue.cs" />
     <Compile Include="Item.cs" />
@@ -232,9 +235,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />

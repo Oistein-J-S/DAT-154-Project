@@ -16,7 +16,7 @@ namespace ObjectContainerDLL
     {
         static void Main(string[] args)
         {
-            HotelContext db = new HotelContext(new Microsoft.EntityFrameworkCore.DbContextOptions<HotelContext>());
+            var db = new HotelContext();
             DbInitializer.Initialize(db);
         }
     }

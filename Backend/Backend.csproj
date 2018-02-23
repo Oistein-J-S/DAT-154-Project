@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DbInitializer.cs" />
+    <Compile Include="Data\HotelContext.cs" />
+    <Compile Include="Data\Program.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="ModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
