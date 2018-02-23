@@ -209,13 +209,10 @@
   <ItemGroup>
     <Compile Include="Booking.cs" />
     <Compile Include="Customer.cs" />
-    <Compile Include="Data\DbInitializer.cs" />
-    <Compile Include="Data\HotelContext.cs" />
     <Compile Include="Hotel.cs" />
     <Compile Include="Issue.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Order.cs" />
-    <Compile Include="Data\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
@@ -229,7 +226,9 @@
     <Compile Include="Unused\Service.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
