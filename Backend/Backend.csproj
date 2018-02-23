@@ -54,10 +54,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bootstrapper\Bootstrapper.csproj">
-      <Project>{13b36244-a79d-41d0-a752-ca1225dc0e07}</Project>
-      <Name>Bootstrapper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ObjectContainerDLL\ObjectContainerDLL.csproj">
       <Project>{fce30f91-868f-4af7-9c88-d4441da3b752}</Project>
       <Name>ObjectContainerDLL</Name>
