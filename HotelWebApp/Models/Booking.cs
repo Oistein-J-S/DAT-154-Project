@@ -32,5 +32,6 @@ namespace HotelWebApp.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room> Rooms { get; set; }
         public virtual Order Order { get; set; }
+        public virtual Customer Customer1 { get; set; }
     }
 }

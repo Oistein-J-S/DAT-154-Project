@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dat154vaar18Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="dat154vaar18Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bookings">
           <Key>
             <PropertyRef Name="BookingId" />
@@ -17,6 +17,17 @@
           <Property Name="CheckedIn" Type="bit" Nullable="false" />
           <Property Name="CheckedOut" Type="bit" />
           <Property Name="Orders" Type="int" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Balance" Type="int" Nullable="false" />
+          <Property Name="Pwd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Bookings" Type="int" />
         </EntityType>
         <EntityType Name="Hotel">
           <Key>
@@ -183,8 +194,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Customers_Bookings">
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Bookings">
+              <PropertyRef Name="BookingId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="dat154vaar18ModelStoreContainer">
           <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Issue" EntityType="Self.Issue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
@@ -225,9 +249,12 @@
             <End Role="Orders" EntitySet="Orders" />
             <End Role="Bookings" EntitySet="Bookings" />
           </AssociationSet>
+          <AssociationSet Name="FK_Customers_Bookings" Association="Self.FK_Customers_Bookings">
+            <End Role="Bookings" EntitySet="Bookings" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dat154vaar18Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -245,6 +272,7 @@
           <Property Name="Orders" Type="Int32" />
           <NavigationProperty Name="Rooms" Relationship="Self.FK__Rooms__Bookings__619B8048" FromRole="Bookings" ToRole="Rooms" />
           <NavigationProperty Name="Order" Relationship="Self.FK__Table__Orders__5070F446" FromRole="Bookings" ToRole="Orders" />
+          <NavigationProperty Name="Customer1" Relationship="dat154vaar18Model.FK_Customers_Bookings" FromRole="Booking" ToRole="Customer" />
         </EntityType>
         <EntityType Name="Hotel">
           <Key>
@@ -467,7 +495,36 @@
             <End Role="Rooms" EntitySet="Rooms" />
             <End Role="Superior" EntitySet="Superiors" />
           </AssociationSet>
+          <EntitySet Name="Customers" EntityType="dat154vaar18Model.Customer" />
+          <AssociationSet Name="FK_Customers_Bookings" Association="dat154vaar18Model.FK_Customers_Bookings">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Balance" Type="Int32" Nullable="false" />
+          <Property Name="Pwd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bookings" Type="Int32" />
+          <NavigationProperty Name="Booking" Relationship="dat154vaar18Model.FK_Customers_Bookings" FromRole="Customer" ToRole="Booking" />
+        </EntityType>
+        <Association Name="FK_Customers_Bookings">
+          <End Type="dat154vaar18Model.Booking" Role="Booking" Multiplicity="1" />
+          <End Type="dat154vaar18Model.Customer" Role="Customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="BookingId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -560,6 +617,18 @@
               <MappingFragment StoreEntitySet="Superior">
                 <ScalarProperty Name="rNumber" ColumnName="rNumber" />
                 <ScalarProperty Name="ROOM_SZ" ColumnName="ROOM_SZ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="dat154vaar18Model.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Bookings" ColumnName="Bookings" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

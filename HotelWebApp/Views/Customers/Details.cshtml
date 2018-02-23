@@ -1,0 +1,57 @@
+﻿@model HotelWebApp.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Display("Navn")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName + " " + model.LastName)
+        </dd>
+        <dt>
+            @Html.Display("Balanse")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Balance + " kr")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pwd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pwd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bookings)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bookings)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Booking.BookingId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Booking.BookingId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

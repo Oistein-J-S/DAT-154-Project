@@ -34,5 +34,6 @@ namespace HotelWebApp.Models
         public virtual DbSet<Standard> Standards { get; set; }
         public virtual DbSet<Suite> Suites { get; set; }
         public virtual DbSet<Superior> Superiors { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
     }
 }
