@@ -51,6 +51,7 @@ namespace LobbyDesk
         {
             if (newBooking)
             {
+                
                 //Booking b = new Booking(CustomerId);
             }
         }
