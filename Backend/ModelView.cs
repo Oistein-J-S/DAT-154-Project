@@ -20,7 +20,6 @@ namespace Backend
         public ModelView()
         {
             model = new Model();
-
         }
         //TODO functions
 
