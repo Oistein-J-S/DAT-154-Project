@@ -12,14 +12,14 @@ namespace ObjectContainerDLL
         private IConfigurationRoot configuration;
         public HotelContext(DbContextOptions<HotelContext> options) : base(options)
         {
-
         }
 
-        public HotelContext()
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var builder = new ConfigurationBuilder().SetBasePath(System.AppContext.BaseDirectory).AddJsonFile("appsettings.json", false, true);
-            configuration = builder.Build();
+            base.OnModelCreating(modelBuilder);
         }
+
+
 
         public HotelContext Create(DbContextFactoryOptions options)
         {
