@@ -28,7 +28,7 @@ namespace Backend
         {   
             return false;
         }
-        public List<Booking> GetBookings(DateTime from, DateTime to)
+        public List<Booking> GetBookings(DateTime from = DateTime.now, DateTime to = DateTime.now)
         {
             return null;
         }
@@ -38,7 +38,32 @@ namespace Backend
             return null;
         }
 
-        public List<Booking> GetBookings(string type)
+        public List<Booking> GetBookings(string romType)
+        {
+            return null;
+        }
+
+        public List<Room> GetAvailibleRooms(DateTime from = DateTime.now, DateTime to = DateTime.now)
+        {
+            return null;
+        }
+
+        public List<Room> GetAvailibleRooms(string type, DateTime from = DateTime.now, DateTime to = DateTime.now)
+        {
+            return null;
+        }
+
+        public List<Room> GetAllRooms(string type, DateTime from = DateTime.now, DateTime to = DateTime.now)
+        {
+            return null;
+        }
+
+        public List<Room> getOccupiedRooms(DateTime from = DateTime.now, DateTime to = DateTime.now)
+        {
+            return null;
+        }
+
+        public List<Room> getOccupiedRooms(string Type, DateTime from = DateTime.now, DateTime to = DateTime.now)
         {
             return null;
         }
@@ -46,8 +71,6 @@ namespace Backend
 
         /*
          * Ideas for functions:
-         * "getFreeRoom" returns list of room with no booking
-         * "getOccupiedRoom" returns list of room with booking
          * "makeBooking" takes in info (subs to event from views) from views (web + desktop), sends it to Model for use
          * "checkIn" and "checkOut" 
          * "deleteBooking"
