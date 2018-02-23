@@ -1,0 +1,69 @@
+﻿@model IEnumerable<HotelWebApp.Models.Booking>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckedIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckedOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order.orderId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Balance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckedIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckedOut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order.orderId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BookingId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BookingId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BookingId })
+        </td>
+    </tr>
+}
+
+</table>
