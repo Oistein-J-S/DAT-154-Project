@@ -25,9 +25,9 @@ namespace LobbyDesk
             InitializeComponent();
             this.CancelButton = CancelButton;
             this.AcceptButton = SaveButton;
-            FirstNameTextBox.Text = b.customer.FirstName;
-            LastNameTextBox.Text = b.customer.LastName;
-            CustomerIdTextBox.Text = b.customer.Id.ToString();
+            FirstNameTextBox.Text = b.Customer.FirstName;
+            LastNameTextBox.Text = b.Customer.LastName;
+            CustomerIdTextBox.Text = b.Customer.Id.ToString();
             BookingBalanceTextBox.Text = b.Balance.ToString();
             //RoomTypeComboBox.SelectedText =
             BookingIdTextBox.Text = b.BookingId.ToString();
@@ -51,7 +51,7 @@ namespace LobbyDesk
         {
             if (newBooking)
             {
-                Booking b = new Booking(CustomerId
+                //Booking b = new Booking(CustomerId);
             }
         }
 
