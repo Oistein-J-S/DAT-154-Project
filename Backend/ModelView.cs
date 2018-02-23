@@ -56,16 +56,17 @@ namespace Backend
          */
         public List<Room> getAllRooms()
         {
-            return null;
+            return model.GetAllRooms() ;
         }
 
         /**
          * This method takes in all relevant info from the view, and sends it to Model to create a new Booking.
          * It returns true if this succeeded, false otherwise.
          */
-        private bool createBooking()
+        private bool createBooking(int roomNumber, DateTime from, DateTime to, string fName, string lName)
         {
-            return false;
+            bool success = model.MakeReservation(roomNumber, from, to, fName, lName);
+            return success;
         }
 
         /**
@@ -142,7 +143,7 @@ namespace Backend
          */
         private bool checkIn(Booking booking)
         {
-            return false;
+            return model.checkIn(booking);
         }
 
         /**
@@ -152,7 +153,7 @@ namespace Backend
         private bool checkOut(Booking booking)
         {
             
-            return false;
+            return model.checkOut(booking);
         }
     }
 }
