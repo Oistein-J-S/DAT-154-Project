@@ -15,19 +15,31 @@ namespace Backend
     class Model
     {
         //Declarations
-        //private Manager dbManager;
-        //private Booking bok;
-
-        //public Manager DbManager { get => dbManager; set => dbManager = value; }
+        private Hotel hotel;
 
         //Creator
         public Model()
         {
-
+            //hotel = new Hotel("Magic", "Solheimsviken 5"); // TODO matcher dette med DB? Hva med DB Lasting?
         }
 
-
-        //TODO create DB manager
         //TODO functions
+        public bool MakeReservation(int roomNumber, DateTime from, DateTime to, string fName, string lName)
+        {
+            return false;
+        }
+        /*
+         * Ideas for functions:
+         * "getFreeRoom" returns list of room with no booking
+         * "getOccupiedRoom" returns list of room with booking
+         * "makeBooking" takes in info (subs to event from views) from views (web + desktop), sends it to Model for use
+         * "checkIn" and "checkOut" 
+         * "deleteBooking"
+         * "searchBooking" takes info from event, sends info to model, model returns list, send event with list
+         * "viewBooking" get info from app, search model, return object
+         * "raiseIssue" subs to even from desktop and app
+         * "payment"
+         *  
+         */
     }
 }
