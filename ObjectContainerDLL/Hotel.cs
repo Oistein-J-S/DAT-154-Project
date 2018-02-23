@@ -13,7 +13,6 @@ namespace ObjectContainerDLL
         [Key]
         public string Name { get; set; }
         public string Address { get; set; }
-        [ForeignKey("")]
         public ICollection<Room> Rooms { get; set; }
 
         public Hotel(string name, string address)

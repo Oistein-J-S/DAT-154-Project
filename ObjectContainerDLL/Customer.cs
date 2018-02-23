@@ -14,13 +14,13 @@ namespace ObjectContainerDLL
     public class Customer
     {
         [Key]
-        [Column("UID")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Balance { get; set; }
         private string Pwd { get; set; }
+        public ICollection<Booking> Bookings { get; set; } 
 
         // TODO pasword
 

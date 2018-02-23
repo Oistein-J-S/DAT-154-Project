@@ -10,8 +10,8 @@ namespace ObjectContainerDLL
 {
     public abstract class Room
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int RoomNumber { get; set; } //make ENUM?
         public int BedCount { get; set; } //make ENUM?
         public ICollection<Booking> Bookings { get; set; }
