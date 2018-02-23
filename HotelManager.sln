@@ -1,17 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalApp", "UniversalApp\UniversalApp.csproj", "{C5F7BD9C-E777-4128-9903-843358398755}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobbyDesk", "LobbyDesk\LobbyDesk.csproj", "{78502CCF-C7CD-4638-A22C-4F04EF7EEF04}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootstrapper", "Bootstrapper\Bootstrapper.csproj", "{13B36244-A79D-41D0-A752-CA1225DC0E07}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FCE30F91-868F-4AF7-9C88-D4441DA3B752} = {FCE30F91-868F-4AF7-9C88-D4441DA3B752}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectContainerDLL", "ObjectContainerDLL\ObjectContainerDLL.csproj", "{FCE30F91-868F-4AF7-9C88-D4441DA3B752}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelWebApp", "HotelWebApp\HotelWebApp.csproj", "{C026A428-5A5B-46D8-A689-DF3CC4A61ED6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FCE30F91-868F-4AF7-9C88-D4441DA3B752} = {FCE30F91-868F-4AF7-9C88-D4441DA3B752}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{4F98FF7F-4C93-435B-A73C-4D7A1E2A3492}"
 EndProject

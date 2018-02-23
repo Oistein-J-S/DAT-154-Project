@@ -216,7 +216,6 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Data\DbInitializer.cs" />
     <Compile Include="Data\HotelContext.cs" />
-    <Compile Include="Data\Program.cs" />
     <Compile Include="Hotel.cs" />
     <Compile Include="Issue.cs" />
     <Compile Include="Item.cs" />

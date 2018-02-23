@@ -15,17 +15,17 @@ namespace Backend
     {
         //Declarations
         private Hotel hotel;
+        var db;
 
 
         //Creator
         public Model()
         {
-            var db = new HotelContext();
+            db = new HotelContext();
             DbInitializer.Initialize(db);
         }
 
-        //TODO functions
-        //TODO Conect to DB
+        //Functions
         public bool MakeReservation(int roomNumber, DateTime from, DateTime to, string fName, string lName)
         {   
             return false;
