@@ -27,7 +27,17 @@ namespace LobbyDesk
 
         private void RoomServiceSaveButton_Click(object sender, EventArgs e)
         {
-            Order o = new Order(l);
+            Order o;
+            if (l.Count != 0)
+            {
+                o = new Order(l);
+                System.Windows.Forms.MessageBox.Show("Order saved!");
+            } else
+            {
+                System.Windows.Forms.MessageBox.Show("Order cannot be empty!");
+
+            }
+
         }
 
         private void RoomServiceItemAddButton_Click(object sender, EventArgs e)
@@ -41,6 +51,11 @@ namespace LobbyDesk
         private void RoomServiceItemDeleteButton_Click(object sender, EventArgs e)
         {
             l.Remove((Item)RoomServiceItemPickComboBox.SelectedItem);
+        }
+
+        private void RoomServiceCancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

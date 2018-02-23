@@ -27,8 +27,13 @@ namespace LobbyDesk
 
         private void RaiseIssueSave_Click(object sender, EventArgs e)
         {
+            if (RaisedIssueTitleTextBox.Text.Length > 0 && RaisedIssueDescTextBox.Text.Length > 0) {
             Issue i = new Issue(RaisedIssueTitleTextBox.Text, RaisedIssueDescTextBox.Text);
-            this.Close();
+                System.Windows.Forms.MessageBox.Show("Your report has been submitted!");
+            } else {
+                System.Windows.Forms.MessageBox.Show("Title or description cannot be empty!");
+            }
+            
         }
 
         private void RaisedIssueDescTextBox_TextChanged(object sender, EventArgs e)
@@ -39,7 +44,6 @@ namespace LobbyDesk
         private void RaiseIssueCancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            this.Dispose();
         }
     }
 }

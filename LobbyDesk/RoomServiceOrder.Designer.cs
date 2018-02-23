@@ -118,6 +118,7 @@
             this.RoomServiceCancelButton.TabIndex = 8;
             this.RoomServiceCancelButton.Text = "Cancel";
             this.RoomServiceCancelButton.UseVisualStyleBackColor = true;
+            this.RoomServiceCancelButton.Click += new System.EventHandler(this.RoomServiceCancelButton_Click);
             // 
             // RoomServiceOrder
             // 

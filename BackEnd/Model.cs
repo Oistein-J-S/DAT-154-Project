@@ -51,8 +51,9 @@ namespace Backend
             return null;
         }
 
-        public List<Room> GetAvailibleRooms(DateTime from = DateTime.now, DateTime to = DateTime.now) //Avalible rooms within date
+        public List<Room> GetAvailibleRooms(DateTime from = DateTime.Now, DateTime to = DateTime.now) //Avalible rooms within date
         {
+
             return null;
         }
 
@@ -61,7 +62,7 @@ namespace Backend
             return null;
         }
 
-        public List<Room> GetAllRooms() // All roms
+        public List<Room> GetAllRooms() // All rooms
         {
             return null;
         }

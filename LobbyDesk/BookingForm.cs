@@ -51,9 +51,11 @@ namespace LobbyDesk
         {
             if (newBooking)
             {
-                
+
                 //Booking b = new Booking(CustomerId);
             }
+            this.Close();
+
 
         }
 
@@ -61,6 +63,12 @@ namespace LobbyDesk
         {
             LoadCustomer f = new LoadCustomer();
             f.Show();
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
         }
     }
 }

@@ -11,6 +11,12 @@ namespace Backend
      * Connects to the views
      * on create: create new modell (cascading creation)
      */
+
+        public class BookingEventArgs : EventArgs 
+        {
+    public List<Booking> Bookings { get; set; }
+}
+
     public class ModelView
     {
         //Declarations
@@ -21,6 +27,21 @@ namespace Backend
         {
             model = new Model();
         }
+
+        public event EventHandler<BookingEventArgs> GotBookings;
+
+        protected virtual void OnGotBookings(List<Booking> bookings)
+        {
+            if (GotBookings != null) {
+                GotBookings(this, new BookingEventArgs() { Bookings = bookings});
+
+            }
+        }
+
+
+
+
+
         //TODO functions
 
 
@@ -125,6 +146,9 @@ namespace Backend
          */
         private List<Booking> getCheckIn()
         {
+            //Get this from the model
+            List<Booking> bookings = null;
+            OnGotBookings(bookings);
             return null;
         }
 

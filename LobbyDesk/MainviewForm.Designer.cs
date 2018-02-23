@@ -174,7 +174,7 @@
             this.Controls.Add(this.CheckInTodayLAbel);
             this.Controls.Add(this.CheckInTodayListBox);
             this.Name = "MainviewForm";
-            this.Text = "Form1";
+            this.Text = "LobbyDesktop";
             this.ResumeLayout(false);
             this.PerformLayout();
 

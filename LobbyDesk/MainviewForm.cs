@@ -14,6 +14,14 @@ namespace LobbyDesk
 
 
         }
+        private void OnGotBookings(object source, EventArgs args)
+        {
+            CheckInTodayListBox.DataSource =  args;
+        }
+
+
+
+
         private void GetCheckOutsToday(object sender, EventArgs e)
         {
             CheckOutTodayListBox.DataSource = (List<Booking>)sender;
@@ -56,9 +64,6 @@ namespace LobbyDesk
         private void RegisterMaintReqButton_Click(object sender, EventArgs e)
         {
             Form f = new RaiseIssue();
-            f.TopLevel = false;
-            f.Parent = this;
-            f.Activate();
             f.Show();
         }
 
