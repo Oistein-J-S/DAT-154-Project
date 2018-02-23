@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,46 +12,51 @@ namespace ObjectContainerDLL
      * A booking is stored in a room and represents a customers reservation of a room.
      * Each booking handles the customer and the customers room service requests
      */
+    [Table("Booking")]
     public class Booking
     {
-        //Declarations
-        private int bookingId;
-        public Customer customer;
-        private int balance;
-        private DateTime dateFrom;
-        private DateTime dateTo;
-        private bool checkedIn;
-        private bool checkedOut;
-        private List<Order> orders;
+        //Properties
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int BookingId { get; set; }
+        [ForeignKey("UID")]
+        public Customer Customer { get; set; }
+        public int Balance { get; set; }
+        public DateTime DateFrom { get; set; }
+        public DateTime DateTo { get; set; }
+        public bool CheckedIn { get; set; }
+        public bool CheckedOut { get; set; }
+        public ICollection<Order> Orders { get; set; }
 
-        //Propperties
-        public int BookingId { get => bookingId;}
-        internal Customer Customer { get => customer; set => customer = value; }
-        public int Balance { get => balance; set => balance = value; }
-        public DateTime DateFrom { get => dateFrom;}
-        public DateTime DateTo { get => dateTo;}
-        public bool CheckedIn { get => checkedIn;}
-        public bool CheckedOut { get => checkedOut;}
-        public List<Order> Orders { get => Orders;}
 
-        public ICollection<Booking> Bookings { get; set; }
-
-        public Booking(int bookingId, Customer customer, DateTime dateFrom, DateTime dateTo)
+        public Booking(int bookingID, Customer customer, DateTime dateFrom, DateTime dateTo)
         {
-            this.bookingId = bookingId;
-            this.customer = customer;
-            this.dateFrom = dateFrom;
-            this.dateTo = dateTo;
-            balance = 0;
-            checkedIn = false;
-            checkedOut = false;
-            orders = new List<Order>();
+            BookingId = bookingID;
+            Customer = customer;
+            DateFrom = dateFrom;
+            DateTo = dateTo;
+            Balance = 0;
+            CheckedIn = false;
+            CheckedOut = false;
+            Orders = new List<Order>();
         }
 
-        // Creates a new romservice item
-        public void OrderRoomService(List<string> items, int cost)
+        public Booking(Customer customer, DateTime dateFrom, DateTime dateTo)
         {
-            orders.Add(new Order(items, cost));
+            Customer = customer;
+            DateFrom = dateFrom;
+            DateTo = dateTo;
+            Balance = 0;
+            CheckedIn = false;
+            CheckedOut = false;
+            Orders = new List<Order>();
+        }
+
+
+        // Creates a new romservice item
+        public void OrderRoomService(string items, int cost)
+        {
+            Orders.Add(new Order(items, cost));
         }
 
         public List<Order> getActiveService()
@@ -69,8 +76,8 @@ namespace ObjectContainerDLL
         {
             if (dateFrom < dateTo)
             {
-                this.dateFrom = dateFrom;
-                this.dateTo = dateTo;
+                DateFrom = dateFrom;
+                DateTo = dateTo;
                 return true;
             }
             // eroneus dates
@@ -83,7 +90,7 @@ namespace ObjectContainerDLL
         public bool Settle()
         {
             //If payment is OK
-            if (Charge(balance)) { 
+            if (Charge(Balance)) { 
                 Balance = 0;
                 return true;
             }
@@ -98,7 +105,7 @@ namespace ObjectContainerDLL
         {
             if (DateTime.Now >= DateFrom && DateTime.Now <= DateTo) //Within reservation time
             {
-                checkedIn = true;
+                CheckedIn = true;
                 return true;
             }
             // something is not right
@@ -117,7 +124,7 @@ namespace ObjectContainerDLL
             }
             if (Settle())
             {
-                checkedOut = true;
+                CheckedOut = true;
             }
         }
 
@@ -129,15 +136,15 @@ namespace ObjectContainerDLL
          */
         public bool overlaps(Booking booking)
         {
-            if ((dateFrom <= booking.DateFrom && dateTo > booking.DateFrom))// if from is within this reservation 
+            if ((DateFrom <= booking.DateFrom && DateTo > booking.DateFrom))// if from is within this reservation 
             {
                 return true;
             }
-            else if (dateFrom < booking.DateTo || dateTo >= booking.DateTo) //or if to is within this reservation
+            else if (DateFrom < booking.DateTo || DateTo >= booking.DateTo) //or if to is within this reservation
             {
                 return true;
             }
-            else if (dateFrom >= booking.DateFrom || dateTo <= booking.DateTo) // or if the reservation in it's entirety is within the new reservation
+            else if (DateFrom >= booking.DateFrom || DateTo <= booking.DateTo) // or if the reservation in it's entirety is within the new reservation
             {
                 return true;
             }

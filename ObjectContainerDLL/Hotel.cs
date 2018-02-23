@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,13 +10,11 @@ namespace ObjectContainerDLL
 {
     public class Hotel
     {
-        private string name;
-        private string address;
-        private List<Room> rooms;
-
-        public string Name { get => name; set => name = value; }
-        public string Address { get => address; set => address = value; }
-        internal List<Room> Rooms { get => rooms; set => rooms = value; }
+        [Key]
+        public string Name { get; set; }
+        public string Address { get; set; }
+        [ForeignKey("")]
+        public ICollection<Room> Rooms { get; set; }
 
         public Hotel(string name, string address)
         {
@@ -38,11 +38,3 @@ namespace ObjectContainerDLL
         }
     }
 }
-
-/**
- * internal List<Room> Rooms
- *  {
- *    get => rooms;
- *    set { rooms = value; }
- *  }
- */

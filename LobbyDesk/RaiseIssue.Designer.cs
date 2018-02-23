@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.RaisedIssueDescriptionLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.RaisedIssueDescTextBox = new System.Windows.Forms.TextBox();
             this.RaisedIssueTitleLabel = new System.Windows.Forms.Label();
-            this.RaisedIssueTextBox = new System.Windows.Forms.TextBox();
-            this.RaiseIssueSave = new System.Windows.Forms.Button();
-            this.RaiseIssueCancel = new System.Windows.Forms.Button();
+            this.RaisedIssueTitleTextBox = new System.Windows.Forms.TextBox();
+            this.RaiseIssueSaveButton = new System.Windows.Forms.Button();
+            this.RaiseIssueCancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RaisedIssueDescriptionLabel
@@ -45,13 +45,14 @@
             this.RaisedIssueDescriptionLabel.TabIndex = 0;
             this.RaisedIssueDescriptionLabel.Text = "Description";
             // 
-            // textBox1
+            // RaisedIssueDescTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 65);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(203, 175);
-            this.textBox1.TabIndex = 1;
+            this.RaisedIssueDescTextBox.Location = new System.Drawing.Point(12, 65);
+            this.RaisedIssueDescTextBox.Multiline = true;
+            this.RaisedIssueDescTextBox.Name = "RaisedIssueDescTextBox";
+            this.RaisedIssueDescTextBox.Size = new System.Drawing.Size(203, 175);
+            this.RaisedIssueDescTextBox.TabIndex = 1;
+            this.RaisedIssueDescTextBox.TextChanged += new System.EventHandler(this.RaisedIssueDescTextBox_TextChanged);
             // 
             // RaisedIssueTitleLabel
             // 
@@ -62,41 +63,43 @@
             this.RaisedIssueTitleLabel.TabIndex = 2;
             this.RaisedIssueTitleLabel.Text = "Title";
             // 
-            // RaisedIssueTextBox
+            // RaisedIssueTitleTextBox
             // 
-            this.RaisedIssueTextBox.Location = new System.Drawing.Point(12, 26);
-            this.RaisedIssueTextBox.Name = "RaisedIssueTextBox";
-            this.RaisedIssueTextBox.Size = new System.Drawing.Size(203, 20);
-            this.RaisedIssueTextBox.TabIndex = 3;
+            this.RaisedIssueTitleTextBox.Location = new System.Drawing.Point(12, 26);
+            this.RaisedIssueTitleTextBox.Name = "RaisedIssueTitleTextBox";
+            this.RaisedIssueTitleTextBox.Size = new System.Drawing.Size(203, 20);
+            this.RaisedIssueTitleTextBox.TabIndex = 3;
+            this.RaisedIssueTitleTextBox.TextChanged += new System.EventHandler(this.RaisedIssueTextBox_TextChanged);
             // 
-            // RaiseIssueSave
+            // RaiseIssueSaveButton
             // 
-            this.RaiseIssueSave.Location = new System.Drawing.Point(140, 259);
-            this.RaiseIssueSave.Name = "RaiseIssueSave";
-            this.RaiseIssueSave.Size = new System.Drawing.Size(75, 23);
-            this.RaiseIssueSave.TabIndex = 4;
-            this.RaiseIssueSave.Text = "Save";
-            this.RaiseIssueSave.UseVisualStyleBackColor = true;
+            this.RaiseIssueSaveButton.Location = new System.Drawing.Point(140, 259);
+            this.RaiseIssueSaveButton.Name = "RaiseIssueSaveButton";
+            this.RaiseIssueSaveButton.Size = new System.Drawing.Size(75, 23);
+            this.RaiseIssueSaveButton.TabIndex = 4;
+            this.RaiseIssueSaveButton.Text = "Save";
+            this.RaiseIssueSaveButton.UseVisualStyleBackColor = true;
+            this.RaiseIssueSaveButton.Click += new System.EventHandler(this.RaiseIssueSave_Click);
             // 
-            // RaiseIssueCancel
+            // RaiseIssueCancelButton
             // 
-            this.RaiseIssueCancel.Location = new System.Drawing.Point(59, 259);
-            this.RaiseIssueCancel.Name = "RaiseIssueCancel";
-            this.RaiseIssueCancel.Size = new System.Drawing.Size(75, 23);
-            this.RaiseIssueCancel.TabIndex = 5;
-            this.RaiseIssueCancel.Text = "Cancel";
-            this.RaiseIssueCancel.UseVisualStyleBackColor = true;
+            this.RaiseIssueCancelButton.Location = new System.Drawing.Point(59, 259);
+            this.RaiseIssueCancelButton.Name = "RaiseIssueCancelButton";
+            this.RaiseIssueCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.RaiseIssueCancelButton.TabIndex = 5;
+            this.RaiseIssueCancelButton.Text = "Cancel";
+            this.RaiseIssueCancelButton.UseVisualStyleBackColor = true;
             // 
             // RaiseIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(223, 293);
-            this.Controls.Add(this.RaiseIssueCancel);
-            this.Controls.Add(this.RaiseIssueSave);
-            this.Controls.Add(this.RaisedIssueTextBox);
+            this.Controls.Add(this.RaiseIssueCancelButton);
+            this.Controls.Add(this.RaiseIssueSaveButton);
+            this.Controls.Add(this.RaisedIssueTitleTextBox);
             this.Controls.Add(this.RaisedIssueTitleLabel);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.RaisedIssueDescTextBox);
             this.Controls.Add(this.RaisedIssueDescriptionLabel);
             this.Name = "RaiseIssue";
             this.Text = "Raise Issue";
@@ -108,10 +111,10 @@
         #endregion
 
         private System.Windows.Forms.Label RaisedIssueDescriptionLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox RaisedIssueDescTextBox;
         private System.Windows.Forms.Label RaisedIssueTitleLabel;
-        private System.Windows.Forms.TextBox RaisedIssueTextBox;
-        private System.Windows.Forms.Button RaiseIssueSave;
-        private System.Windows.Forms.Button RaiseIssueCancel;
+        private System.Windows.Forms.TextBox RaisedIssueTitleTextBox;
+        private System.Windows.Forms.Button RaiseIssueSaveButton;
+        private System.Windows.Forms.Button RaiseIssueCancelButton;
     }
 }

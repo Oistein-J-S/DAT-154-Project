@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,24 +13,24 @@ namespace ObjectContainerDLL
      */
     public class Customer
     {
-        private int id;
-        private string firstName;
-        private string lastName;
-        private int balance;
-
-        public int Id { get => id; set => id = value; }
-        public string FirstName { get => firstName; set => firstName = value; }
-        public string LastName { get => lastName; set => lastName = value; }
-        public int Balance { get => balance; set => balance = value; }
+        [Key]
+        [Column("UID")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Balance { get; set; }
+        private string Pwd { get; set; }
 
         // TODO pasword
 
-        public Customer(int id, string firstName, string lastName, int balance)
+        public Customer(int id, string firstName, string lastName, string pwd, int balance)
         {
-            this.id = id;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.balance = balance;
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Balance = balance;
+            Pwd = pwd;
         }
     }
 }

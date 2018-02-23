@@ -64,6 +64,7 @@
             this.RoomServiceItemAddButton.TabIndex = 2;
             this.RoomServiceItemAddButton.Text = "Add";
             this.RoomServiceItemAddButton.UseVisualStyleBackColor = true;
+            this.RoomServiceItemAddButton.Click += new System.EventHandler(this.RoomServiceItemAddButton_Click);
             // 
             // RoomServiceItemListBox
             // 
@@ -81,6 +82,7 @@
             this.RoomServiceItemDeleteButton.TabIndex = 4;
             this.RoomServiceItemDeleteButton.Text = "Delete";
             this.RoomServiceItemDeleteButton.UseVisualStyleBackColor = true;
+            this.RoomServiceItemDeleteButton.Click += new System.EventHandler(this.RoomServiceItemDeleteButton_Click);
             // 
             // RoomServiceAmountLabel
             // 
@@ -106,6 +108,7 @@
             this.RoomServiceSaveButton.TabIndex = 7;
             this.RoomServiceSaveButton.Text = "Save";
             this.RoomServiceSaveButton.UseVisualStyleBackColor = true;
+            this.RoomServiceSaveButton.Click += new System.EventHandler(this.RoomServiceSaveButton_Click);
             // 
             // RoomServiceCancelButton
             // 

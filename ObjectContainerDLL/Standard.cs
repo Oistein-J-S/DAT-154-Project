@@ -9,7 +9,6 @@ namespace ObjectContainerDLL
     public class Standard : Room
     {
         const int ROOM_SZ = 14;
-        //public Standard(int roomNumber, int bedCount) : base(roomNumber, bedCount, ROOM_SZ) { }
         public Standard(int roomNumber, int bedCount) : base(roomNumber, bedCount) { }
     }
 }
