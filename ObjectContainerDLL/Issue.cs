@@ -13,12 +13,14 @@ namespace ObjectContainerDLL
     {
         // Properties
         public string Description { get; set; }
+        public string Title { get; set; }
         public DateTime Created { get; set; }
         public DateTime? Completed { get; set; }
 
-        public Issue(string description)
+        public Issue(string title, string description)
         {
             this.Description = description;
+            this.Title = title;
             Created = DateTime.Now;
         }
 

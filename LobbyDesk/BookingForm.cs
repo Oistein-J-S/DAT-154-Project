@@ -13,13 +13,18 @@ namespace LobbyDesk
 {
     public partial class BookingForm : Form
     {
+        bool newBooking;
+
         public BookingForm()
         {
             InitializeComponent();
+            newBooking = true;
         }
         public BookingForm(Booking b)
         {
             InitializeComponent();
+            this.CancelButton = CancelButton;
+            this.AcceptButton = SaveButton;
             FirstNameTextBox.Text = b.customer.FirstName;
             LastNameTextBox.Text = b.customer.LastName;
             CustomerIdTextBox.Text = b.customer.Id.ToString();
@@ -27,6 +32,8 @@ namespace LobbyDesk
             //RoomTypeComboBox.SelectedText =
             BookingIdTextBox.Text = b.BookingId.ToString();
             //RoomNoTextBox.Text = b.
+            newBooking = false;
+            
 
         }
 
@@ -38,6 +45,20 @@ namespace LobbyDesk
         private void Form2_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            if (newBooking)
+            {
+                Booking b = new Booking(CustomerId
+            }
+        }
+
+        private void LoadCustomerButton_Click(object sender, EventArgs e)
+        {
+            LoadCustomer f = new LoadCustomer();
+            f.Show();
         }
     }
 }
