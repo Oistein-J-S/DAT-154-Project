@@ -16,10 +16,12 @@ namespace Backend
         //Declarations
         private Hotel hotel;
 
+
         //Creator
         public Model()
         {
-            //hotel = new Hotel("Magic", "Solheimsviken 5"); // TODO matcher dette med DB? Hva med DB Lasting?
+            var db = new HotelContext();
+            DbInitializer.Initialize(db);
         }
 
         //TODO functions
@@ -79,13 +81,12 @@ namespace Backend
             return null;
         }
 
-        public bool checkIn()
+        public bool checkIn(Booking book)
         {
             return false;
         }
 
-        //Cange signature?
-        public bool checkOut()
+        public bool checkOut(Booking book)
         {
             return false;
         }
