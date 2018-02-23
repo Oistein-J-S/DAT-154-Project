@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using DBMGR;
 using ObjectContainerDLL;
 
 namespace Backend
@@ -24,10 +23,27 @@ namespace Backend
         }
 
         //TODO functions
+        //TODO Conect to DB
         public bool MakeReservation(int roomNumber, DateTime from, DateTime to, string fName, string lName)
-        {
+        {   
             return false;
         }
+        public List<Booking> GetBookings(DateTime from, DateTime to)
+        {
+            return null;
+        }
+
+        public List<Booking> GetBookings(int roomNumer)
+        {
+            return null;
+        }
+
+        public List<Booking> GetBookings(string type)
+        {
+            return null;
+        }
+
+
         /*
          * Ideas for functions:
          * "getFreeRoom" returns list of room with no booking
