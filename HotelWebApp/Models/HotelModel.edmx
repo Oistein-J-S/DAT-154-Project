@@ -1,0 +1,589 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dat154vaar18Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bookings">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer" Type="int" Nullable="false" />
+          <Property Name="Balance" Type="real" Nullable="false" />
+          <Property Name="DateFrom" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DateTo" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CheckedIn" Type="bit" Nullable="false" />
+          <Property Name="CheckedOut" Type="bit" />
+          <Property Name="Orders" Type="int" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Rooms" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Issue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Completed" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="real" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="orderId" />
+          </Key>
+          <Property Name="orderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Total" Type="real" Nullable="false" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Fulfilled" Type="datetime2" Precision="7" />
+          <Property Name="Items" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rooms">
+          <Key>
+            <PropertyRef Name="Roomnumber" />
+          </Key>
+          <Property Name="Roomnumber" Type="int" Nullable="false" />
+          <Property Name="BedCount" Type="int" Nullable="false" />
+          <Property Name="Bookings" Type="int" Nullable="false" />
+          <Property Name="Issues" Type="int" />
+          <Property Name="LastCleaned" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Standard">
+          <Key>
+            <PropertyRef Name="rNumber" />
+          </Key>
+          <Property Name="rNumber" Type="int" Nullable="false" />
+          <Property Name="ROOM_SZ" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Suite">
+          <Key>
+            <PropertyRef Name="rNumber" />
+          </Key>
+          <Property Name="rNumber" Type="int" Nullable="false" />
+          <Property Name="ROOM_SZ" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Superior">
+          <Key>
+            <PropertyRef Name="rNumber" />
+          </Key>
+          <Property Name="rNumber" Type="int" Nullable="false" />
+          <Property Name="ROOM_SZ" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Hotel__Rooms__60A75C0F">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
+          <End Role="Hotel" Type="Self.Hotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="Roomnumber" />
+            </Principal>
+            <Dependent Role="Hotel">
+              <PropertyRef Name="Rooms" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Items__4BAC3F29">
+          <End Role="Item" Type="Self.Item" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Items" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rooms__Bookings__619B8048">
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookings">
+              <PropertyRef Name="BookingId" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="Bookings" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rooms__Issues__628FA481">
+          <End Role="Issue" Type="Self.Issue" Multiplicity="0..1" />
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issue">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="Issues" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Standard__rNumbe__6383C8BA">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
+          <End Role="Standard" Type="Self.Standard" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="Roomnumber" />
+            </Principal>
+            <Dependent Role="Standard">
+              <PropertyRef Name="rNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Suite__rNumber__6477ECF3">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
+          <End Role="Suite" Type="Self.Suite" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="Roomnumber" />
+            </Principal>
+            <Dependent Role="Suite">
+              <PropertyRef Name="rNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Superior__rNumbe__656C112C">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
+          <End Role="Superior" Type="Self.Superior" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="Roomnumber" />
+            </Principal>
+            <Dependent Role="Superior">
+              <PropertyRef Name="rNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Table__Orders__5070F446">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="orderId" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="Orders" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dat154vaar18ModelStoreContainer">
+          <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Issue" EntityType="Self.Issue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Standard" EntityType="Self.Standard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suite" EntityType="Self.Suite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Superior" EntityType="Self.Superior" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Hotel__Rooms__60A75C0F" Association="Self.FK__Hotel__Rooms__60A75C0F">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Hotel" EntitySet="Hotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Items__4BAC3F29" Association="Self.FK__Orders__Items__4BAC3F29">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rooms__Bookings__619B8048" Association="Self.FK__Rooms__Bookings__619B8048">
+            <End Role="Bookings" EntitySet="Bookings" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rooms__Issues__628FA481" Association="Self.FK__Rooms__Issues__628FA481">
+            <End Role="Issue" EntitySet="Issue" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Standard__rNumbe__6383C8BA" Association="Self.FK__Standard__rNumbe__6383C8BA">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Standard" EntitySet="Standard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Suite__rNumber__6477ECF3" Association="Self.FK__Suite__rNumber__6477ECF3">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Suite" EntitySet="Suite" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Superior__rNumbe__656C112C" Association="Self.FK__Superior__rNumbe__656C112C">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Superior" EntitySet="Superior" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Table__Orders__5070F446" Association="Self.FK__Table__Orders__5070F446">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dat154vaar18Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer" Type="Int32" Nullable="false" />
+          <Property Name="Balance" Type="Single" Nullable="false" />
+          <Property Name="DateFrom" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DateTo" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CheckedIn" Type="Boolean" Nullable="false" />
+          <Property Name="CheckedOut" Type="Boolean" />
+          <Property Name="Orders" Type="Int32" />
+          <NavigationProperty Name="Rooms" Relationship="Self.FK__Rooms__Bookings__619B8048" FromRole="Bookings" ToRole="Rooms" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__Table__Orders__5070F446" FromRole="Bookings" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rooms" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__Hotel__Rooms__60A75C0F" FromRole="Hotel" ToRole="Rooms" />
+        </EntityType>
+        <EntityType Name="Issue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Completed" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Rooms" Relationship="Self.FK__Rooms__Issues__628FA481" FromRole="Issue" ToRole="Rooms" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="Single" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Items__4BAC3F29" FromRole="Item" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="orderId" />
+          </Key>
+          <Property Name="orderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Total" Type="Single" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Fulfilled" Type="DateTime" Precision="7" />
+          <Property Name="Items" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK__Table__Orders__5070F446" FromRole="Orders" ToRole="Bookings" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Orders__Items__4BAC3F29" FromRole="Orders" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="Roomnumber" />
+          </Key>
+          <Property Name="Roomnumber" Type="Int32" Nullable="false" />
+          <Property Name="BedCount" Type="Int32" Nullable="false" />
+          <Property Name="Bookings" Type="Int32" Nullable="false" />
+          <Property Name="Issues" Type="Int32" />
+          <Property Name="LastCleaned" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK__Rooms__Bookings__619B8048" FromRole="Rooms" ToRole="Bookings" />
+          <NavigationProperty Name="Hotels" Relationship="Self.FK__Hotel__Rooms__60A75C0F" FromRole="Rooms" ToRole="Hotel" />
+          <NavigationProperty Name="Issue" Relationship="Self.FK__Rooms__Issues__628FA481" FromRole="Rooms" ToRole="Issue" />
+          <NavigationProperty Name="Standard" Relationship="Self.FK__Standard__rNumbe__6383C8BA" FromRole="Rooms" ToRole="Standard" />
+          <NavigationProperty Name="Suite" Relationship="Self.FK__Suite__rNumber__6477ECF3" FromRole="Rooms" ToRole="Suite" />
+          <NavigationProperty Name="Superior" Relationship="Self.FK__Superior__rNumbe__656C112C" FromRole="Rooms" ToRole="Superior" />
+        </EntityType>
+        <EntityType Name="Standard">
+          <Key>
+            <PropertyRef Name="rNumber" />
+          </Key>
+          <Property Name="rNumber" Type="Int32" Nullable="false" />
+          <Property Name="ROOM_SZ" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__Standard__rNumbe__6383C8BA" FromRole="Standard" ToRole="Rooms" />
+        </EntityType>
+        <EntityType Name="Suite">
+          <Key>
+            <PropertyRef Name="rNumber" />
+          </Key>
+          <Property Name="rNumber" Type="Int32" Nullable="false" />
+          <Property Name="ROOM_SZ" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__Suite__rNumber__6477ECF3" FromRole="Suite" ToRole="Rooms" />
+        </EntityType>
+        <EntityType Name="Superior">
+          <Key>
+            <PropertyRef Name="rNumber" />
+          </Key>
+          <Property Name="rNumber" Type="Int32" Nullable="false" />
+          <Property Name="ROOM_SZ" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__Superior__rNumbe__656C112C" FromRole="Superior" ToRole="Rooms" />
+        </EntityType>
+        <Association Name="FK__Rooms__Bookings__619B8048">
+          <End Role="Bookings" Type="Self.Booking" Multiplicity="1" />
+          <End Role="Rooms" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookings">
+              <PropertyRef Name="BookingId" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="Bookings" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Table__Orders__5070F446">
+          <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Bookings" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="orderId" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="Orders" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hotel__Rooms__60A75C0F">
+          <End Role="Rooms" Type="Self.Room" Multiplicity="1" />
+          <End Role="Hotel" Type="Self.Hotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="Roomnumber" />
+            </Principal>
+            <Dependent Role="Hotel">
+              <PropertyRef Name="Rooms" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rooms__Issues__628FA481">
+          <End Role="Issue" Type="Self.Issue" Multiplicity="0..1" />
+          <End Role="Rooms" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issue">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="Issues" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Items__4BAC3F29">
+          <End Role="Item" Type="Self.Item" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Items" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Standard__rNumbe__6383C8BA">
+          <End Role="Rooms" Type="Self.Room" Multiplicity="1" />
+          <End Role="Standard" Type="Self.Standard" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="Roomnumber" />
+            </Principal>
+            <Dependent Role="Standard">
+              <PropertyRef Name="rNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Suite__rNumber__6477ECF3">
+          <End Role="Rooms" Type="Self.Room" Multiplicity="1" />
+          <End Role="Suite" Type="Self.Suite" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="Roomnumber" />
+            </Principal>
+            <Dependent Role="Suite">
+              <PropertyRef Name="rNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Superior__rNumbe__656C112C">
+          <End Role="Rooms" Type="Self.Room" Multiplicity="1" />
+          <End Role="Superior" Type="Self.Superior" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="Roomnumber" />
+            </Principal>
+            <Dependent Role="Superior">
+              <PropertyRef Name="rNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dat154vaar18Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bookings" EntityType="Self.Booking" />
+          <EntitySet Name="Hotels" EntityType="Self.Hotel" />
+          <EntitySet Name="Issues" EntityType="Self.Issue" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Rooms" EntityType="Self.Room" />
+          <EntitySet Name="Standards" EntityType="Self.Standard" />
+          <EntitySet Name="Suites" EntityType="Self.Suite" />
+          <EntitySet Name="Superiors" EntityType="Self.Superior" />
+          <AssociationSet Name="FK__Rooms__Bookings__619B8048" Association="Self.FK__Rooms__Bookings__619B8048">
+            <End Role="Bookings" EntitySet="Bookings" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Table__Orders__5070F446" Association="Self.FK__Table__Orders__5070F446">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hotel__Rooms__60A75C0F" Association="Self.FK__Hotel__Rooms__60A75C0F">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Hotel" EntitySet="Hotels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rooms__Issues__628FA481" Association="Self.FK__Rooms__Issues__628FA481">
+            <End Role="Issue" EntitySet="Issues" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Items__4BAC3F29" Association="Self.FK__Orders__Items__4BAC3F29">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Standard__rNumbe__6383C8BA" Association="Self.FK__Standard__rNumbe__6383C8BA">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Standard" EntitySet="Standards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Suite__rNumber__6477ECF3" Association="Self.FK__Suite__rNumber__6477ECF3">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Suite" EntitySet="Suites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Superior__rNumbe__656C112C" Association="Self.FK__Superior__rNumbe__656C112C">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Superior" EntitySet="Superiors" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dat154vaar18ModelStoreContainer" CdmEntityContainer="dat154vaar18Entities">
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="dat154vaar18Model.Booking">
+              <MappingFragment StoreEntitySet="Bookings">
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+                <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+                <ScalarProperty Name="CheckedIn" ColumnName="CheckedIn" />
+                <ScalarProperty Name="CheckedOut" ColumnName="CheckedOut" />
+                <ScalarProperty Name="Orders" ColumnName="Orders" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels">
+            <EntityTypeMapping TypeName="dat154vaar18Model.Hotel">
+              <MappingFragment StoreEntitySet="Hotel">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Rooms" ColumnName="Rooms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Issues">
+            <EntityTypeMapping TypeName="dat154vaar18Model.Issue">
+              <MappingFragment StoreEntitySet="Issue">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="dat154vaar18Model.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="dat154vaar18Model.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="orderId" ColumnName="orderId" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Fulfilled" ColumnName="Fulfilled" />
+                <ScalarProperty Name="Items" ColumnName="Items" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="dat154vaar18Model.Room">
+              <MappingFragment StoreEntitySet="Rooms">
+                <ScalarProperty Name="Roomnumber" ColumnName="Roomnumber" />
+                <ScalarProperty Name="BedCount" ColumnName="BedCount" />
+                <ScalarProperty Name="Bookings" ColumnName="Bookings" />
+                <ScalarProperty Name="Issues" ColumnName="Issues" />
+                <ScalarProperty Name="LastCleaned" ColumnName="LastCleaned" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Standards">
+            <EntityTypeMapping TypeName="dat154vaar18Model.Standard">
+              <MappingFragment StoreEntitySet="Standard">
+                <ScalarProperty Name="rNumber" ColumnName="rNumber" />
+                <ScalarProperty Name="ROOM_SZ" ColumnName="ROOM_SZ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suites">
+            <EntityTypeMapping TypeName="dat154vaar18Model.Suite">
+              <MappingFragment StoreEntitySet="Suite">
+                <ScalarProperty Name="rNumber" ColumnName="rNumber" />
+                <ScalarProperty Name="ROOM_SZ" ColumnName="ROOM_SZ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Superiors">
+            <EntityTypeMapping TypeName="dat154vaar18Model.Superior">
+              <MappingFragment StoreEntitySet="Superior">
+                <ScalarProperty Name="rNumber" ColumnName="rNumber" />
+                <ScalarProperty Name="ROOM_SZ" ColumnName="ROOM_SZ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

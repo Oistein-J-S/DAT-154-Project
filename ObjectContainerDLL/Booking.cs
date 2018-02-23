@@ -19,7 +19,6 @@ namespace ObjectContainerDLL
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BookingId { get; set; }
-        [ForeignKey("UID")]
         public Customer Customer { get; set; }
         public int Balance { get; set; }
         public DateTime DateFrom { get; set; }
