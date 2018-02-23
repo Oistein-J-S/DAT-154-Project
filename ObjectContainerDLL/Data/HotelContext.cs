@@ -1,14 +1,37 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ObjectContainerDLL;
 
 namespace ObjectContainerDLL
 {
-    public class HotelContext : DbContext
+    public partial class HotelContext : DbContext
     {
+        private IConfigurationRoot configuration;
         public HotelContext(DbContextOptions<HotelContext> options) : base(options)
         {
+
+        }
+
+        public HotelContext()
+        {
+            var builder = new ConfigurationBuilder().SetBasePath(System.AppContext.BaseDirectory).AddJsonFile("appsettings.json", false, true);
+            configuration = builder.Build();
+        }
+
+        public HotelContext Create(DbContextFactoryOptions options)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<HotelContext>();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("hoteldb"), m => { m.EnableRetryOnFailure(); });
+
+            return new HotelContext(optionsBuilder.Options);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:dat154.database.windows.net,1433;Initial Catalog=dat154hotel;Persist Security Info=False;User ID=dat154vaar18;Password=TheCakeIsALie1337;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         public DbSet<Room> Rooms { get; set; }
@@ -20,26 +43,6 @@ namespace ObjectContainerDLL
         public DbSet<Standard> StandardRooms { get; set; }
         public DbSet<Suite> SuiteRooms { get; set; }
         public DbSet<Superior> SuperiorRooms { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Room>().ToTable("Room");
-            modelBuilder.Entity<Booking>().ToTable("Booking");
-            modelBuilder.Entity<Customer>().ToTable("Customer");
-            modelBuilder.Entity<Hotel>().ToTable("Hotel");
-            modelBuilder.Entity<Issue>().ToTable("Issue");
-            modelBuilder.Entity<Order>().ToTable("Order");
-            modelBuilder.Entity<Standard>().ToTable("Standard");
-            modelBuilder.Entity<Suite>().ToTable("Suite");
-            modelBuilder.Entity<Superior>().ToTable("Superior");
-        }
-
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddDbContext<HotelContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("dat154vaar18")));
-
-            services.AddMvc();
-        }
+        public DbSet<Item> Items { get; set; }
     }
 }

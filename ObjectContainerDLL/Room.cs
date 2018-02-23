@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,12 @@ namespace ObjectContainerDLL
     public abstract class Room
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        private int RoomNumber { get; set; } //make ENUM?
-        private int BedCount { get; set; } //make ENUM?
-        private ICollection<Booking> Bookings { get; set; }
-        private ICollection<Issue> Issues { get; set; } //Maintenance issues
-        private DateTime LastCleaned { get; set; }
+        [Key]
+        public int RoomNumber { get; set; } //make ENUM?
+        public int BedCount { get; set; } //make ENUM?
+        public ICollection<Booking> Bookings { get; set; }
+        public ICollection<Issue> Issues { get; set; } //Maintenance issues
+        public DateTime LastCleaned { get; set; }
 
 
         public Room(int roomNumber, int bedCount)

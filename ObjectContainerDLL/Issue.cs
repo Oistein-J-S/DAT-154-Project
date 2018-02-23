@@ -27,7 +27,7 @@ namespace ObjectContainerDLL
          */
         public bool changeDescription(string description)
         {
-            if (!Completed.HasValue)//the maitenence is not complete
+            if (!Completed.HasValue)//the maintenence is not complete
             {
                 Description = description;
                 return true;

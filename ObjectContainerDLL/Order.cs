@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,27 +12,26 @@ namespace ObjectContainerDLL
      */
     public class Order
     {
-        // Declarations
-        private ICollection<Item> items;
-        private int total;
-        private DateTime created;
-        private DateTime? fulfilled; // nullable DateTime
 
         //Best practice properties
-        public ICollection<Item> Items { get => Items;}
-        public int Total { get => total; }
-        public DateTime Created { get => Created;}
-        public DateTime? Fulfilled { get => Fulfilled;} //NB can be null!!
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int orderID { get; set; }
+        public int Total { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime? Fulfilled { get; set; } //NB can be null!!
+        public ICollection<Item> Items { get; set; }
 
 
-        public Order (ICollection<Item> items)
+        public Order (string name, int price)
         {
-            this.items = items;
-            foreach (Item i in items)
-            {
-                total = +i.Value;
-            }
-            created = DateTime.Now;
+            Created = DateTime.Now;
+            Items.Add(new Item(price, name));
+        }
+
+        public Order (ICollection<Item> item)
+        {
+            Items = (List<Item>) Items.Concat(item);
+            Created = DateTime.Now;
         }
 
         //Not needed, as only complete orders are sent.
@@ -56,7 +56,7 @@ namespace ObjectContainerDLL
         {
             if (!IsFulfilled())
             {
-                fulfilled = DateTime.Now;
+                Fulfilled = DateTime.Now;
                 return true;
             }
             return false;
@@ -67,7 +67,7 @@ namespace ObjectContainerDLL
          */
         public bool IsFulfilled()
         {
-            return fulfilled.HasValue;
+            return Fulfilled.HasValue;
         }
     }
 }

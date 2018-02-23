@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,12 +12,14 @@ namespace ObjectContainerDLL
      * A booking is stored in a room and represents a customers reservation of a room.
      * Each booking handles the customer and the customers room service requests
      */
+    [Table("Booking")]
     public class Booking
     {
-
         //Properties
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BookingId { get; set; }
+        [ForeignKey("UID")]
         public Customer Customer { get; set; }
         public int Balance { get; set; }
         public DateTime DateFrom { get; set; }
@@ -39,7 +42,7 @@ namespace ObjectContainerDLL
         }
 
         // Creates a new romservice item
-        public void OrderRoomService(List<string> items, int cost)
+        public void OrderRoomService(string items, int cost)
         {
             Orders.Add(new Order(items, cost));
         }
