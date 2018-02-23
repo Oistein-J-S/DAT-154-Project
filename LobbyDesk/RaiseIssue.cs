@@ -28,11 +28,18 @@ namespace LobbyDesk
         private void RaiseIssueSave_Click(object sender, EventArgs e)
         {
             Issue i = new Issue(RaisedIssueTitleTextBox.Text, RaisedIssueDescTextBox.Text);
+            this.Close();
         }
 
         private void RaisedIssueDescTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void RaiseIssueCancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            this.Dispose();
         }
     }
 }

@@ -73,6 +73,7 @@
             // 
             // RaiseIssueSaveButton
             // 
+            this.RaiseIssueSaveButton.CausesValidation = false;
             this.RaiseIssueSaveButton.Location = new System.Drawing.Point(140, 259);
             this.RaiseIssueSaveButton.Name = "RaiseIssueSaveButton";
             this.RaiseIssueSaveButton.Size = new System.Drawing.Size(75, 23);
@@ -83,17 +84,20 @@
             // 
             // RaiseIssueCancelButton
             // 
+            this.RaiseIssueCancelButton.CausesValidation = false;
             this.RaiseIssueCancelButton.Location = new System.Drawing.Point(59, 259);
             this.RaiseIssueCancelButton.Name = "RaiseIssueCancelButton";
             this.RaiseIssueCancelButton.Size = new System.Drawing.Size(75, 23);
             this.RaiseIssueCancelButton.TabIndex = 5;
             this.RaiseIssueCancelButton.Text = "Cancel";
             this.RaiseIssueCancelButton.UseVisualStyleBackColor = true;
+            this.RaiseIssueCancelButton.Click += new System.EventHandler(this.RaiseIssueCancelButton_Click);
             // 
             // RaiseIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(223, 293);
             this.Controls.Add(this.RaiseIssueCancelButton);
             this.Controls.Add(this.RaiseIssueSaveButton);

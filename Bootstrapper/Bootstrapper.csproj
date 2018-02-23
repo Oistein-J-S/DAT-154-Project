@@ -49,10 +49,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Backend\Backend.csproj">
-      <Project>{80e4e408-2d70-4a33-8214-c1b20fb8023c}</Project>
-      <Name>Backend</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LobbyDesk\LobbyDesk.csproj">
       <Project>{c2da35b2-81c4-4882-8bcd-ce5c247a3dfc}</Project>
       <Name>LobbyDesk</Name>

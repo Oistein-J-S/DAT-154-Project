@@ -56,6 +56,9 @@ namespace LobbyDesk
         private void RegisterMaintReqButton_Click(object sender, EventArgs e)
         {
             Form f = new RaiseIssue();
+            f.TopLevel = false;
+            f.Parent = this;
+            f.Activate();
             f.Show();
         }
 

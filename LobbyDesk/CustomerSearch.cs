@@ -29,5 +29,10 @@ namespace LobbyDesk
         {
             // search for last name from customer db
         }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

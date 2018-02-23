@@ -54,6 +54,7 @@ namespace LobbyDesk
                 
                 //Booking b = new Booking(CustomerId);
             }
+
         }
 
         private void LoadCustomerButton_Click(object sender, EventArgs e)
